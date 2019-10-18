@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'UOCJob';
+
+  /* Muestra el mensaje recibido en un diálogo de alerta */
+  showMessage(message: string) {
+    alert(message);
+  }
 }

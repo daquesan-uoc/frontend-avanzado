@@ -30,10 +30,25 @@ export const rootRouterConfig: Routes = [
     data: { title: "Signup" }
   },
   {
+    path: "dashboard",
+    loadChildren: () =>
+      import("./views/dashboard/dashboard.module").then(
+        m => m.DashboardModule
+      ),
+
+    data: { title: "Dashboard", breadcrumb: "DASHBOARD" }
+  },
+  {
+    path: "profile",
+    loadChildren: () =>
+      import("./views/profile/profile.module").then(m => m.ProfileModule),
+    data: { title: "Material", breadcrumb: "MATERIAL" }
+  },
+  /*{
     path: "admin",
     /*  component: AdminLayoutComponent, */
     /* canActivate: [AuthGuard], */
-    children: [
+    /*children: [
       {
         path: "dashboard",
         loadChildren: () =>
@@ -65,7 +80,7 @@ export const rootRouterConfig: Routes = [
         data: { title: "Offers", breadcrumb: "Offers" }
       }
     ]
-  },
+  },*/
   {
     path: "**",
     redirectTo: "sessions/404"
