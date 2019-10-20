@@ -9,9 +9,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileLanguagesComponent } from './profile-student/profile-languages/profile-languages.component';
 import { LanguagesManagementComponent } from './profile-student/profile-languages/languages-management/languages-management.component';
 import { ProfileStudiesComponent } from './profile-student/profile-studies/profile-studies.component';
+import { StudiesManagementComponent } from './profile-student/profile-studies/studies-management/studies-management.component';
 
 @NgModule({
-  declarations: [ProfileComponent, ProfileStudentComponent, ProfileAccountComponent, ProfileLanguagesComponent, LanguagesManagementComponent, ProfileStudiesComponent],
+  declarations: [ProfileComponent, ProfileStudentComponent, ProfileAccountComponent, ProfileLanguagesComponent, LanguagesManagementComponent, ProfileStudiesComponent, StudiesManagementComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

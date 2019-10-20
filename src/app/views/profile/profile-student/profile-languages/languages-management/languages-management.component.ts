@@ -6,8 +6,6 @@ import { ProfileService } from '../../../../../shared/services/profile.service';
 import { User } from 'src/app/shared/models/user.model';
 import { Language, LanguageLevel, LanguageName } from 'src/app/shared/models/language.model';
 import { DataService } from '../../../../../shared/services/data.service';
-import { ThrowStmt } from '@angular/compiler';
-import { transition } from '@angular/animations';
 
 @Component({
   selector: 'app-languages-management',

@@ -5,6 +5,7 @@ import { ProfileAccountComponent } from './profile-student/profile-account/profi
 import { ProfileLanguagesComponent } from './profile-student/profile-languages/profile-languages.component';
 import { LanguagesManagementComponent } from './profile-student/profile-languages/languages-management/languages-management.component';
 import { ProfileStudiesComponent } from './profile-student/profile-studies/profile-studies.component';
+import { StudiesManagementComponent } from './profile-student/profile-studies/studies-management/studies-management.component';
 
 //const routes: Routes = [];
 
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'profile-student/profile-studies',
     component: ProfileStudiesComponent
+  },
+  {
+    path: 'profile-student/profile-studies/studies-management/:uid',
+    component: StudiesManagementComponent
   }
 ];
 
