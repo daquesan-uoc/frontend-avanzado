@@ -1,0 +1,121 @@
+<h1 class="d-flex justify-content-center">Profile (Estudiante)</h1>
+<section class="mx-2">
+  <h2 class="d-flex justify-content-start">Datos Personales</h2>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="d-flex justify-content-center">
+        <img src="{{ user.avatar_hash }}" class="avatar"/>
+      </div>
+      <div>
+        <span class="d-flex justify-content-center">{{ user.name }} {{ user.surname }}</span>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div>
+        <label for="email">Email</label>
+        <span name="email" id="email" class="form-control">{{ user.email }}</span>
+      </div>
+      <div>
+        <label for="birthdate">Fecha de nacimiento</label>
+        <span name="birthdate" id="birthdate" class="form-control">{{ user.birthdate }}</span>
+      </div>
+      <div>
+        <label for="phone">Tel&eacute;fono de contacto</label>
+        <span name="phone" id="phone" class="form-control">{{ user.phone }}</span>
+      </div>
+      <div>
+        <label for="documentNumber">NIF/NIE</label>
+        <span name="documentNumber" id="documentNumber" class="form-control">{{ user.documentNumber }}</span>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div>
+        <label for="license">Permisos de conducir</label>
+        <span name="license" id="license" class="form-control">{{ user.license }}</span>
+      </div>
+      <div>
+        <label for="street">Direcci&oacute;n</label>
+        <span name="street" id="street" class="form-control">{{ user.address.street }}</span>
+      </div>
+      <div>
+        <label for="municipe">Municipio</label>
+        <span name="municipe" id="municipe" class="form-control">{{ user.address.municipe.name }}</span>
+      </div>
+      <div>
+        <label for="province">Provincia</label>
+        <span name="province" id="province" class="form-control">{{ user.address.province.name }}</span>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <label for="aboutMe">Sobre m&iacute;</label>
+        <textarea readonly="true" name="aboutMe" id="aboutMe" class="form-control">{{ user.aboutMe }}</textarea>
+      </div>
+      <div>
+        <label for="otherCompetences">Otras competencias</label>
+        <textarea readonly="true" name="otherCompetences" id="otherCompetences" class="form-control">{{ user.otherCompetences }}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-account']">Modificar</button>
+  </div>
+</section>
+<section class="mx-2">
+  <h2 class="d-flex justify-content-start">Formaci&oacute;n Acad&eacute;mica</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <th>Nivel</th>
+        <th>T&iacute;tulo</th>
+        <th>Centro</th>
+        <th>Fecha</th>
+        <th>Certificado</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let study of user.studies">
+          <td>{{ study.level.name }}</td>
+          <td>{{ study.title.name }}</td>
+          <td>{{ study.institution.name || study.institution }}</td>
+          <td>{{ study.date }}</td>
+          <td>{{ study.certificate }}</td>
+        </tr>
+      </tbody>
+    </table>
+</section>
+<section class="mx-2">
+  <h2 class="d-flex justify-content-start">Experiencia Laboral</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <th>Empresa</th>
+      <th>Puesto</th>
+      <th>Fechas</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let experience of user.experiencies">
+        <td>{{ experience.company }}</td>
+        <td>{{ experience.position }}</td>
+        <td>{{ experience.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section class="mx-2">
+  <h2 class="d-flex justify-content-start">Idiomas</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <th>Nivel</th>
+      <th>Idioma</th>
+      <th>Fecha</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let language of user.languages">
+        <td>{{ language.level.name }}</td>
+        <td>{{ language.name.name }}</td>
+        <td>{{ language.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages']">Modificar</button>
+  </div>
+</section>

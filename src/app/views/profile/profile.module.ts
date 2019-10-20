@@ -3,12 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
+import { ProfileStudentComponent } from './profile-student/profile-student.component';
+import { ProfileAccountComponent } from './profile-student/profile-account/profile-account.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileLanguagesComponent } from './profile-student/profile-languages/profile-languages.component';
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [ProfileComponent, ProfileStudentComponent, ProfileAccountComponent, ProfileLanguagesComponent],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ProfileModule { }

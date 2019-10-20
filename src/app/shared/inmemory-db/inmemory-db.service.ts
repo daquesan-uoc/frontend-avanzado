@@ -1,5 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { User } from '../models/user.model';
+import { User, DocumentType, Province, Municipe } from '../models/user.model';
 
 export class FakeBackendService implements InMemoryDbService {
   createDb() {
@@ -67,7 +67,20 @@ export class FakeBackendService implements InMemoryDbService {
             certificate: false
           }
         ],
-        experiencies: [],
+        experiencies: [
+          {
+            uid: 1,
+            company: 'Satander',
+            position: 'Programador Junior',
+            date: '01/10/2012-01/12/2012'
+          },
+          {
+            uid: 2,
+            company: 'Spotity',
+            position: 'Programador Senior',
+            date: '01/01/2013-'
+          }
+        ],
         languages: [
           {
             uid: 1,
@@ -188,6 +201,34 @@ export class FakeBackendService implements InMemoryDbService {
         title: [{ uid: 6, name: 'Empresariales' }]
       }
     ];
-    return { users, offers };
+
+    const documentsType: DocumentType[] = [
+      { uid: 1, name: 'NIF/NIE' },
+      { uid: 2, name: 'Otro' },
+      { uid: 3, name: 'Pasaporte' }
+    ];
+
+    const provinces: Province[] = [
+      { uid: 1, name: 'Málaga'},
+      { uid: 2, name: 'Sevilla'},
+      { uid: 3, name: 'Madrid'},
+      { uid: 4, name: 'Cádiz'},
+      { uid: 5, name: 'Granada'}
+    ];
+
+    const municipes: Municipe[] = [
+      { uid: 1, name: 'Málaga' },
+      { uid: 2, name: 'Sevilla' },
+      { uid: 3, name: 'Madrid' },
+      { uid: 4, name: 'Cádiz' },
+      { uid: 5, name: 'Granada' },
+      { uid: 6, name: 'Chiclana de la Frontera' },
+      { uid: 7, name: 'Estepona' },
+      { uid: 8, name: 'Campanillas (PTA)' },
+      { uid: 9, name: 'Motril' },
+      { uid: 10, name: 'Osuna' }
+    ];
+
+    return { users, offers, documentsType, provinces, municipes};
   }
 }
