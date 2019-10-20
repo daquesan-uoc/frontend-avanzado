@@ -8,9 +8,10 @@ import { ProfileAccountComponent } from './profile-student/profile-account/profi
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileLanguagesComponent } from './profile-student/profile-languages/profile-languages.component';
 import { LanguagesManagementComponent } from './profile-student/profile-languages/languages-management/languages-management.component';
+import { ProfileStudiesComponent } from './profile-student/profile-studies/profile-studies.component';
 
 @NgModule({
-  declarations: [ProfileComponent, ProfileStudentComponent, ProfileAccountComponent, ProfileLanguagesComponent, LanguagesManagementComponent],
+  declarations: [ProfileComponent, ProfileStudentComponent, ProfileAccountComponent, ProfileLanguagesComponent, LanguagesManagementComponent, ProfileStudiesComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

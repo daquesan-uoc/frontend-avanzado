@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { ProfileAccountComponent } from './profile-student/profile-account/profile-account.component';
 import { ProfileLanguagesComponent } from './profile-student/profile-languages/profile-languages.component';
 import { LanguagesManagementComponent } from './profile-student/profile-languages/languages-management/languages-management.component';
+import { ProfileStudiesComponent } from './profile-student/profile-studies/profile-studies.component';
 
 //const routes: Routes = [];
 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'profile-student/profile-languages/languages-management/:uid',
     component: LanguagesManagementComponent
+  },
+  {
+    path: 'profile-student/profile-studies',
+    component: ProfileStudiesComponent
   }
 ];
 
