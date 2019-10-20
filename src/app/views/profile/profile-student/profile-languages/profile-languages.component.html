@@ -1,1 +1,35 @@
-<p>profile-languages works!</p>
+<h1 class="d-flex justify-content-center">Profile (Estudiante) - Idiomas</h1>
+<div class="mx-2">
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <th>Nivel</th>
+      <th>Idioma</th>
+      <th>Fecha</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let language of user.languages">
+        <td>{{ language.level.name }}</td>
+        <td>{{ language.name.name }}</td>
+        <td>{{ language.date }}</td>
+        <td>
+            <button class="btn btn-primary" (click)="delete(language.uid)">Borrar</button>
+        </td>
+        <td>
+            <!--<button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages']">Editar</button>-->
+            <button class="btn btn-primary">Edita</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+  <div class="d-flex justify-content-end">
+    <!--<button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages']">Nueva</button>-->
+    <button class="btn btn-primary d-flex justify-content-end">Nueva</button>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary d-flex justify-content-end" (click)="back()">Volver</button>
+  </div>
+</div>
+</div>
