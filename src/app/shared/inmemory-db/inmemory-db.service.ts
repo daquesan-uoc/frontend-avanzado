@@ -1,5 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { User, DocumentType, Province, Municipe } from '../models/user.model';
+import { LanguageLevel, LanguageName } from '../models/language.model';
 
 export class FakeBackendService implements InMemoryDbService {
   createDb() {
@@ -202,7 +203,7 @@ export class FakeBackendService implements InMemoryDbService {
       }
     ];
 
-    const documentsType: DocumentType[] = [
+    const documentTypes: DocumentType[] = [
       { uid: 1, name: 'NIF/NIE' },
       { uid: 2, name: 'Otro' },
       { uid: 3, name: 'Pasaporte' }
@@ -229,6 +230,20 @@ export class FakeBackendService implements InMemoryDbService {
       { uid: 10, name: 'Osuna' }
     ];
 
-    return { users, offers, documentsType, provinces, municipes};
+    const languageLevels: LanguageLevel[] = [
+      { uid: 1, name: 'A1'},
+      { uid: 2, name: 'A2'},
+      { uid: 3, name: 'B1'},
+      { uid: 4, name: 'B2'},
+      { uid: 5, name: 'C1'},
+      { uid: 6, name: 'C2'}
+    ];
+
+    const languageNames: LanguageName[] = [
+      { uid: 1, name: 'Inglés'},
+      { uid: 2, name: 'Francés'}
+    ];
+
+    return { users, offers, documentTypes, provinces, municipes, languageLevels, languageNames};
   }
 }

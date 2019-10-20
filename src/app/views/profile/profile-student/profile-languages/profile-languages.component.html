@@ -1,5 +1,5 @@
-<h1 class="d-flex justify-content-center">Profile (Estudiante) - Idiomas</h1>
-<div class="mx-2">
+<div class="px-2">
+  <h1 class="d-flex justify-content-center">Profile (Estudiante) - Idiomas</h1>
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <th>Nivel</th>
@@ -17,19 +17,17 @@
             <button class="btn btn-primary" (click)="delete(language.uid)">Borrar</button>
         </td>
         <td>
-            <!--<button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages']">Editar</button>-->
-            <button class="btn btn-primary">Edita</button>
+            <button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages/languages-management/' + language.uid]">Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
   <div class="row">
-  <div class="d-flex justify-content-end">
-    <!--<button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages']">Nueva</button>-->
-    <button class="btn btn-primary d-flex justify-content-end">Nueva</button>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary" [routerLink]="['/profile/profile-student/profile-languages/languages-management/0']">Nueva</button>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary d-flex justify-content-end" (click)="back()">Volver</button>
+    </div>
   </div>
-  <div class="d-flex justify-content-end">
-    <button class="btn btn-primary d-flex justify-content-end" (click)="back()">Volver</button>
-  </div>
-</div>
 </div>

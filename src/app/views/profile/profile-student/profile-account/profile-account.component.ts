@@ -4,9 +4,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../../../shared/services/profile.service';
 import { User, Province, Municipe, DocumentType } from '../../../../shared/models/user.model';
-import { DocumentTypesService } from '../../../../shared/services/document-types.service';
-import { ProvincesService } from '../../../../shared/services/provinces.service';
-import { MunicipesService } from '../../../../shared/services/municipes.service';
+import { DataService } from '../../../../shared/services/data.service';
 
 @Component({
   selector: 'app-profile-account',
@@ -29,9 +27,7 @@ export class ProfileAccountComponent implements OnInit {
     private location: Location,
     private router: Router,
     private profileService: ProfileService,
-    private documentTypeService: DocumentTypesService,
-    private provincesService: ProvincesService,
-    private municipesService: MunicipesService) { }
+    private dataService: DataService) { }
 
   ngOnInit() {
     // Se recupera el usuario conectado
@@ -42,23 +38,25 @@ export class ProfileAccountComponent implements OnInit {
     if (!Object.keys(this.user).length) {
       this.router.navigate(['']);
     }
-    this.getMasterData();
+
+    // Se obtienen los datos para las listas desplegables
+    this.getData();
     // Se crean los controles y se muestran sus valores
     this.fillForm();
   }
 
   // Obtiene los datos maestros a partir de la información
   // proporcionada por el servicio
-  getMasterData(){
-    this.documentTypeService.getdocumentTypes().then(documentTypes => {
+  getData(){
+    this.dataService.getdocumentTypes().then(documentTypes => {
       this.documentTypes = documentTypes;
     });
 
-    this.provincesService.getProvinces().then(provinces => {
+    this.dataService.getProvinces().then(provinces => {
       this.provinces = provinces;
     });
 
-    this.municipesService.getMunicipes().then(municipes => {
+    this.dataService.getMunicipes().then(municipes => {
       this.municipes = municipes;
     });
   }
