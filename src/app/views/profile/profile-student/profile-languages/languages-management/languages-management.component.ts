@@ -6,6 +6,8 @@ import { ProfileService } from '../../../../../shared/services/profile.service';
 import { User } from 'src/app/shared/models/user.model';
 import { Language, LanguageLevel, LanguageName } from 'src/app/shared/models/language.model';
 import { DataService } from '../../../../../shared/services/data.service';
+import { ThrowStmt } from '@angular/compiler';
+import { transition } from '@angular/animations';
 
 @Component({
   selector: 'app-languages-management',
@@ -71,8 +73,8 @@ export class LanguagesManagementComponent implements OnInit {
     }
 
     this.languagesManagementForm = this.formBuilder.group({
-      languageName: [this.uid === 0 ? 1 : this.language.name.uid, [Validators.required]],
-      languageLevel: [this.uid === 0 ? 1 : this.language.level.uid, [Validators.required]],
+      languageName: [this.uid === 0 ? '' : this.language.name.uid, [Validators.required]],
+      languageLevel: [this.uid === 0 ? '' : this.language.level.uid, [Validators.required]],
       other: [''],
       date: [this.uid === 0 ? '' : this.language.date, [Validators.pattern(/^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/[0-9]{4}$/), Validators.required]]
     });
@@ -93,5 +95,61 @@ export class LanguagesManagementComponent implements OnInit {
 
   languageLevelOnChange(event) {
     this.languageLevel = event.target.options[event.target.options.selectedIndex].text;
+  }
+
+  getNextLanguageUid(): number {
+    let uid = 0;
+    this.user.languages.forEach(element => {
+      if (element.uid > uid){
+        uid = element.uid;
+      }
+    });
+    return uid + 1;
+  }
+
+  getNextNameUid(): number {
+    let uid = 0;
+    this.languageNames.forEach(element => {
+      if (element.uid > uid){
+        uid = element.uid;
+      }
+    });
+    return uid + 1;
+  }
+
+  getLanguageName(): string {
+    return (this.languageName === 'Otros') ? this.languagesManagementForm.controls['other'].value : this.languageName;
+  }
+
+  save(){
+    // Se obtiene el identificador del nombre del lenguaje
+    let languageNameUid = this.languagesManagementForm.controls['languageName'].value;
+
+    // Se comprueba si se va a añadir un nuevo nombre de idiom
+    if (this.languageName === 'Otros'){
+      this.languageName = this.languagesManagementForm.controls['other'].value;
+      languageNameUid = this.getNextNameUid();
+    }
+
+    // Se comprueba si se va a crear un idioma nuevo
+    if (this.uid === 0){
+      this.language = {
+        uid: this.getNextLanguageUid(),
+        level: { uid: this.languagesManagementForm.controls['languageLevel'].value, name: this.languageLevel},
+        name: { uid: languageNameUid, name: this.languageName },
+        date: this.languagesManagementForm.controls['date'].value
+      };
+
+      // Se añade el lenguaje a la lista de lenguajes del usuario
+      this.user.languages.push(this.language);
+    } else {
+      this.language.level.uid = this.languagesManagementForm.controls['languageLevel'].value;
+      this.language.level.name = this.languageLevel;
+      this.language.name.uid = languageNameUid;
+      this.language.name.name = this.languageName;
+      this.language.date = this.languagesManagementForm.controls['date'].value;
+    }
+
+    this.location.back();
   }
 }
