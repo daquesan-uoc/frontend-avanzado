@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { ProfileService } from '../../../shared/services/profile.service';
-import { User } from '../../../shared/models/user.model';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-profile-student',
   templateUrl: './profile-student.component.html',
   styleUrls: ['./profile-student.component.scss']
 })
-export class ProfileStudentComponent implements OnInit {
+export class ProfileStudentComponent {
   user: User;
-
-  constructor(
-    private router: Router,
-    private profileService: ProfileService) { }
-
-  ngOnInit() {
-    // Se recupera el usuario conectado
+  constructor(private profileService: ProfileService) {
     this.user = this.profileService.user;
-    // Se comprueba que haya un usuario conectado o se vuelve a la
-    // página de inicio
-    if (!Object.keys(this.user).length) {
-      this.router.navigate(['']);
+  }
+
+  deleteStudy(studyID: number) {
+    const studies = this.user.studies;
+    const index = studies.findIndex(study => study.uid === studyID);
+    if (index === -1) {
+      alert('Error: Study not found');
+      return;
     }
+    studies.splice(index, 1);
+    this.profileService.updateProfile(this.user);
+  }
+  deleteLanguage(languageID: any) {
+    const languages = this.user.languages;
+    const index = languages.findIndex(language => language.uid === languageID);
+    if (index === -1) {
+      alert('Error: Language not found');
+      return;
+    }
+    languages.splice(index, 1);
+    this.profileService.updateProfile(this.user);
   }
 }

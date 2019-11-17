@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
-import { ProfileAccountComponent } from './profile-student/profile-account/profile-account.component';
-import { ProfileLanguagesComponent } from './profile-student/profile-languages/profile-languages.component';
-import { LanguagesManagementComponent } from './profile-student/profile-languages/languages-management/languages-management.component';
-import { ProfileStudiesComponent } from './profile-student/profile-studies/profile-studies.component';
-import { StudiesManagementComponent } from './profile-student/profile-studies/studies-management/studies-management.component';
-
-//const routes: Routes = [];
+import { ProfileStudyComponent } from './profile-student/study/profile-study.component';
+import { ProfileLanguageComponent } from './profile-student/language/profile-language.component';
+import { ProfileAccountComponent } from './profile-student/account/profile-account.component';
 
 const routes: Routes = [
   {
@@ -15,24 +11,24 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'profile-student/profile-account',
+    path: 'profile-student/account',
     component: ProfileAccountComponent
   },
   {
-    path: 'profile-student/profile-languages',
-    component: ProfileLanguagesComponent
+    path: 'profile-student/study',
+    component: ProfileStudyComponent
   },
   {
-    path: 'profile-student/profile-languages/languages-management/:uid',
-    component: LanguagesManagementComponent
+    path: 'profile-student/study/:uid',
+    component: ProfileStudyComponent
   },
   {
-    path: 'profile-student/profile-studies',
-    component: ProfileStudiesComponent
+    path: 'profile-student/language',
+    component: ProfileLanguageComponent
   },
   {
-    path: 'profile-student/profile-studies/studies-management/:uid',
-    component: StudiesManagementComponent
+    path: 'profile-student/language/:uid',
+    component: ProfileLanguageComponent
   }
 ];
 
@@ -40,4 +36,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProfileRoutingModule { }
+export class ProfileRoutingModule {}

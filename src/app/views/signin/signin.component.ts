@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SigninService } from './signin.service';
-import { ProfileService } from '../../shared/services/profile.service';
+import { ProfileService } from 'src/app/shared/services/profile.service';
 
 @Component({
   selector: 'app-signin',
@@ -10,37 +10,33 @@ import { ProfileService } from '../../shared/services/profile.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  signinForm: FormGroup;
-  error = false;
-
+  loginForm: FormGroup;
+  submitted = false;
+  errorLogin = false;
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
     private signinService: SigninService,
-    private profileService: ProfileService
-  ) { }
+    private profileService: ProfileService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.signinForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required]
     });
   }
 
-  signin() {
-    // Se llama al servicio para comprobar si los datos introducidos
-    // corresponden a un usuario
-    this.signinService.login(this.signinForm.value).then(user => {
-      // Se comprueba si se ha recuperado un usuario
-      if (user) {
-        // Se almacena el usuario conectado
-        this.profileService.user = user;
-        // Se navega a la ventana de Dashboard
-        this.router.navigate(['dashboard']);
+  onSubmit() {
+    this.submitted = true;
+
+    this.signinService.login({ ...this.loginForm.value }).then(user => {
+      if (!user) {
+        this.errorLogin = true;
+        return;
       }
-      // No se ha recuperado usuario, se indica que ha habido
-      // un error en el intento de conexión
-      this.error = true;
+      this.profileService.user = user;
+      this.router.navigate(['admin/dashboard']);
     });
   }
 }

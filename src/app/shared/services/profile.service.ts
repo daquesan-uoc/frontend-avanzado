@@ -1,43 +1,32 @@
 import { Injectable } from '@angular/core';
 import { AppSettings } from '../app.settings';
-/* import { UserOptions } from '../models/user'; */
 import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
-/* import { AppStore } from '../states/store.inteface';
-import { Store } from '@ngrx/store';
-import * as UserActions from 'app/shared/states/user/actions';*/
 import { User } from '../models/user.model';
 
 @Injectable()
 export class ProfileService {
-  // Redefino la variable privada para almacenar el usuario conectado
-  private mockUser: User = {} as User;
-
-  // Creo las propiedades para guardar y recuperar el usuario conectado
-  set user(user) {
-    this.mockUser = user;
-  }
-  get user() {
-    return this.mockUser;
-  }
+  private _user: User = {} as User;
 
   constructor(
     private http: HttpClient /* , private store$: Store<AppStore> */
   ) {}
 
+  set user(_user) {
+    this._user = _user;
+  }
+  get user() {
+    return this._user;
+  }
   loadProfile(): Observable<any /* UserOptions */> {
-    return of(this.mockUser as any);
+    return of(this.user as any);
     //return this.http.get<UserOptions>(AppSettings.API_ENDPOINT_USER_ME);
   }
   logout(): void {
     /*  this.store$.dispatch(new UserActions.Logout()); */
   }
-  public updateProfile(profile: User): Observable<User> {
-    /*if (Math.random() > 0.5) {
-      return this.http.put<TokenResponse>(AppSettings.API_ENDPOINT_USER_ME, profile);
-    }*/
-    this.mockUser = { ...profile };
-    return of(this.mockUser as User);
+  public updateProfile(profile: any /* User */): Observable<any /* User */> {
+    return this.http.put<any>(AppSettings.API_ENDPOINT_USERS, { ...profile });
   }
   public signupProfile(profile: any /* UserOptions */): Observable<boolean> {
     return this.http.post<boolean>(

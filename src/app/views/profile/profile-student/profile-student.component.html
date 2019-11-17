@@ -1,118 +1,143 @@
-<h1 class="d-flex justify-content-center">Profile (Estudiante)</h1>
-<section class="mx-2">
-  <h2 class="d-flex justify-content-start">Datos Personales</h2>
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="d-flex justify-content-center">
-        <img src="{{ user.avatar_hash }}" class="avatar"/>
-      </div>
-      <div>
-        <span class="d-flex justify-content-center">{{ user.name }} {{ user.surname }}</span>
-      </div>
+<div id="contenido">
+  <div class="float-left" id="foto-perfil">
+    <div>
+      <img
+        class="img-fluid img-profile rounded-circle mx-auto mb-2"
+        src="{{ user.avatar_hash }}"
+      />
     </div>
-    <div class="col-sm-3">
-      <div>
-        <label for="email">Email</label>
-        <span name="email" id="email" class="form-control">{{ user.email }}</span>
-      </div>
-      <div>
-        <label for="birthdate">Fecha de nacimiento</label>
-        <span name="birthdate" id="birthdate" class="form-control">{{ user.birthdate }}</span>
-      </div>
-      <div>
-        <label for="phone">Tel&eacute;fono de contacto</label>
-        <span name="phone" id="phone" class="form-control">{{ user.phone }}</span>
-      </div>
-      <div>
-        <label for="documentNumber">NIF/NIE</label>
-        <span name="documentNumber" id="documentNumber" class="form-control">{{ user.documentNumber }}</span>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div>
-        <label for="license">Permisos de conducir</label>
-        <span name="license" id="license" class="form-control">{{ user.license }}</span>
-      </div>
-      <div>
-        <label for="street">Direcci&oacute;n</label>
-        <span name="street" id="street" class="form-control">{{ user.address.street }}</span>
-      </div>
-      <div>
-        <label for="municipe">Municipio</label>
-        <span name="municipe" id="municipe" class="form-control">{{ user.address.municipe.name }}</span>
-      </div>
-      <div>
-        <label for="province">Provincia</label>
-        <span name="province" id="province" class="form-control">{{ user.address.province.name }}</span>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div>
-        <label for="aboutMe">Sobre m&iacute;</label>
-        <textarea readonly="true" name="aboutMe" id="aboutMe" class="form-control">{{ user.aboutMe }}</textarea>
-      </div>
-      <div>
-        <label for="otherCompetences">Otras competencias</label>
-        <textarea readonly="true" name="otherCompetences" id="otherCompetences" class="form-control">{{ user.otherCompetences }}</textarea>
-      </div>
+    <div class="text-center pr-5">
+      {{ user.name + ' ' + user.surname }}
     </div>
   </div>
-  <button class="btn btn-primary float-right" [routerLink]="['/profile/profile-student/profile-account']">Modificar</button>
-</section>
-<section class="mx-2">
-  <h2 class="d-flex justify-content-start">Formaci&oacute;n Acad&eacute;mica</h2>
-  <table class="table table-bordered table-striped">
-    <thead class="thead-dark">
+
+  <section id="datosPersonales" class="float-left">
+    <table>
+      <tbody>
+        <tr>
+          <th>Email</th>
+          <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+          <th>Fecha de nacimiento</th>
+          <td>{{ user.birthdate }}</td>
+        </tr>
+        <tr>
+          <th>Tel&eacute;fono</th>
+          <td>{{ user.phone }}</td>
+        </tr>
+        <tr>
+          <th>NIF/NIE</th>
+          <td>{{ user.documentNumber }}</td>
+        </tr>
+        <tr>
+          <th>Permisos de conducir</th>
+          <td>{{ user.license }}</td>
+        </tr>
+        <tr>
+          <th>Direccion</th>
+          <td>{{ user.address | json }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/admin/profile/profile-student/account']">Modificar</a>
+  </section>
+  <div id="otra_info" class="float-left">
+    <form>
+      <div class="float-left">
+        <label for="about-me">Acerca de mi...</label><br />
+        <textarea readonly="true" id="about-me" name="about-me">{{
+          user.aboutMe
+        }}</textarea>
+      </div>
+      <div class="float-left">
+        <label for="other">Otras competencias</label> <br />
+
+        <textarea readonly="true" id="other" name="other">{{
+          user.otherCompetences
+        }}</textarea>
+      </div>
+    </form>
+  </div>
+
+  <section style="clear:both;padding-bottom:4em;"></section>
+
+  <h2>Formaci&oacute;n acad&eacute;mica</h2>
+  <section id="formacion_academica">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <th>Tipo</th>
         <th>Nivel</th>
         <th>T&iacute;tulo</th>
         <th>Centro</th>
         <th>Fecha</th>
         <th>Certificado</th>
+        <th>Bilingüe</th>
+        <th>Dual</th>
+        <th>Acciones</th>
       </thead>
       <tbody>
-        <tr *ngFor="let study of user.studies">
+        <tr *ngFor="let study of user.studies; let i = index">
           <td>{{ study.level.name }}</td>
-          <td>{{ study.title.name }}</td>
+          <td>{{ study.grade?.name }}</td>
+
+          <td>{{ study.title.name || study.title }}</td>
           <td>{{ study.institution.name || study.institution }}</td>
           <td>{{ study.date }}</td>
-          <td>{{ study.certificate }}</td>
+          <td>{{ study.certificate ? 'Sí' : 'No' }}</td>
+          <td>{{ study.bilingue ? 'Sí' : 'No' }}</td>
+          <td>{{ study.dual ? 'Sí' : 'No' }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/profile/profile-student/study', study.uid]"
+              >Editar</a
+            >
+            |
+            <a style="cursor:pointer" (click)="deleteStudy(study.uid)"
+              >Borrar</a
+            >
+          </td>
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary float-right" [routerLink]="['/profile/profile-student/profile-studies']">Modificar</button>
-</section>
-<section class="mx-2">
-  <h2 class="d-flex justify-content-start">Experiencia Laboral</h2>
-  <table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <th>Empresa</th>
-      <th>Puesto</th>
-      <th>Fechas</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let experience of user.experiencies">
-        <td>{{ experience.company }}</td>
-        <td>{{ experience.position }}</td>
-        <td>{{ experience.date }}</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-<section class="mx-2">
-  <h2 class="d-flex justify-content-start">Idiomas</h2>
-  <table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <th>Nivel</th>
-      <th>Idioma</th>
-      <th>Fecha</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let language of user.languages">
-        <td>{{ language.level.name }}</td>
-        <td>{{ language.name.name }}</td>
-        <td>{{ language.date }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-primary float-right" [routerLink]="['/profile/profile-student/profile-languages']">Modificar</button>
-</section>
+    <a [routerLink]="['/admin/profile/profile-student/study']"
+      >Nueva formación</a
+    >
+  </section>
+
+  <h2>Idiomas</h2>
+  <section id="languages">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <th>Nivel</th>
+        <th>Idioma</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let language of user.languages">
+          <td>{{ language.level.name }}</td>
+          <td>{{ language.name.name }}</td>
+          <td>{{ language.date }}</td>
+          <td>
+            <a
+              [routerLink]="[
+                '/admin/profile/profile-student/language',
+                language.uid
+              ]"
+              >Editar</a
+            >
+            |
+            <a style="cursor:pointer" (click)="deleteLanguage(language.uid)"
+              >Borrar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/admin/profile/profile-student/language']"
+      >Nuevo idioma</a
+    >
+  </section>
+</div>

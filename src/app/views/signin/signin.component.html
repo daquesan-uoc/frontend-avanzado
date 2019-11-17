@@ -1,22 +1,52 @@
-<div>
-  <img src="/assets/img/logoUOC.png" class="logo" />
-  <div class="col-sm-4 offset-sm-4">
-    <form [formGroup]="signinForm" (ngSubmit)="signin()">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <img src="/assets/img/uoc_logo.png" />
+
+      <h2>Login</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="errorLogin" class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">
+            &times;
+          </button>
+
+          There is an error in email or password
+        </div>
+
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" name="email" id="email" formControlName="email" autofocus>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" id="password" formControlName="password">    
-      </div>
-      <div class="form-group">
-        <button type="submit" [disabled]="signinForm.invalid" class="btn btn-primary">Login</button>
-        <button type="button" class="btn btn-primary float-right">Remember Password</button>
-      </div>
-      <div *ngIf="error" class="alert alert-danger">
-        User not found. Please, check the input data.
-      </div>
-    </form>
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && loginForm.controls.email.errors
+            }"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && loginForm.controls.password.errors
+            }"
+          />
+        </div>
+        <div class="form-group">
+          <button [disabled]="loginForm.invalid" class="btn btn-primary">
+            Login
+          </button>
+          <a routerLink="/forgot-password" class="btn btn-link"
+            >Remember password</a
+          >
+        </div>
+      </form>
+    </div>
   </div>
 </div>

@@ -1,3 +1,6 @@
-<p>
-  offers works!
-</p>
+<h2>
+  Offers
+</h2>
+
+<app-offers-list *ngIf="isOffersList"></app-offers-list>
+<app-offers-profile *ngIf="!isOffersList"></app-offers-profile>

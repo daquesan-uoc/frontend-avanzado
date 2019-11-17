@@ -1,21 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppSettings } from 'src/app/shared/app.settings';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SigninService {
-  base_url: string = "http://mybackend.com/api/";
-  tasks_endpoint = "users";
-  
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   getUsers() {
-    return this.httpClient.get<any>(this.base_url + this.tasks_endpoint).toPromise();
+    return this.http.get<any>(AppSettings.API_ENDPOINT_USERS).toPromise();
   }
 
   async login({ email, password }): Promise<any> {
     const users = await this.getUsers();
-    return users.find((user: any) => user.email === email && user.password === password);
+    // Mock response from backend:
+    return users.find(
+      (user: any) => user.email === email && user.password === password
+    );
   }
 }
