@@ -12,6 +12,9 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './shared/state/user/effects/users.effects';
+
 
 @NgModule({
   imports: [
@@ -31,6 +34,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule.forRoot({stateKey:'router'})
+    //,
+    //EffectsModule.forRoot([UserEffects])
   ],
   declarations: [AppComponent],
   providers: [],

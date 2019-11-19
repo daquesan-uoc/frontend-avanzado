@@ -37,11 +37,11 @@ export class SigninComponent implements OnInit {
 
 
 
-
+/*
   onSubmit() {
     this.store.dispatch(AuthActions.login({ ...this.loginForm.value }));
-  }
-  /*
+  }*/
+  
   onSubmit() {
     this.submitted = true;
 
@@ -53,5 +53,5 @@ export class SigninComponent implements OnInit {
       this.profileService.user = user;
       this.router.navigate(['admin/dashboard']);
     });
-  }*/
+  }
 }
