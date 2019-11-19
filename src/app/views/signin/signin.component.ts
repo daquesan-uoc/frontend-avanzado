@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { SigninService } from './signin.service';
 import { ProfileService } from 'src/app/shared/services/profile.service';
 
+import { Store, select } from '@ngrx/store';
+import { AuthActions, AuthReducers } from '../../shared/state/auth';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -17,7 +20,8 @@ export class SigninComponent implements OnInit {
     private signinService: SigninService,
     private profileService: ProfileService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private store: Store<AuthReducers.AuthState>
   ) {}
 
   ngOnInit() {
@@ -27,6 +31,17 @@ export class SigninComponent implements OnInit {
     });
   }
 
+
+
+
+
+
+
+
+  onSubmit() {
+    this.store.dispatch(AuthActions.login({ ...this.loginForm.value }));
+  }
+  /*
   onSubmit() {
     this.submitted = true;
 
@@ -38,5 +53,5 @@ export class SigninComponent implements OnInit {
       this.profileService.user = user;
       this.router.navigate(['admin/dashboard']);
     });
-  }
+  }*/
 }

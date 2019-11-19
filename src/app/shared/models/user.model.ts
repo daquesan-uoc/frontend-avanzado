@@ -7,6 +7,11 @@ export interface Users {
   [id: number]: User;
 }
 
+export interface Credentials {
+  email: string;
+  password: string;
+}
+
 export interface UserAddress {
   street: string;
   province: Province;
