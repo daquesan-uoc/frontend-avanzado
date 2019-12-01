@@ -1,4 +1,12 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CollegeStudy } from 'src/app/shared/models/study.model';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
@@ -7,7 +15,7 @@ import { dateValidator } from 'src/app/shared/directives/date-validator.directiv
   selector: 'app-university-degree-form',
   templateUrl: './university-degree-form.component.html'
 })
-export class UniversityDegreeComponent {
+export class UniversityDegreeComponent implements OnInit, OnChanges {
   @Output() onSave: EventEmitter<CollegeStudy> = new EventEmitter();
   @Input() study: CollegeStudy = {} as CollegeStudy;
   public rForm: FormGroup;
@@ -15,22 +23,26 @@ export class UniversityDegreeComponent {
   constructor() {}
   ngOnInit() {
     this.loadSelectProperties();
-    this.loadFormInstance();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    let study = {} as CollegeStudy;
+    if (this.hasChangeStudy(changes.study)) {
+      study = changes.study.currentValue;
+    }
+    this.loadFormInstance(study);
+  }
+  private hasChangeStudy(study) {
+    return study && study.currentValue;
   }
 
   public loadSelectProperties(): void {}
 
-  public loadFormInstance(): void {
+  public loadFormInstance(study: CollegeStudy): void {
     this.rForm = new FormGroup({
-      institution: new FormControl(this.study.institution, [
-        Validators.required
-      ]),
-      title: new FormControl(this.study.title, [Validators.required]),
-      date: new FormControl(this.study.date, [
-        Validators.required,
-        dateValidator()
-      ]),
-      bilingue: new FormControl(this.study.bilingue, [])
+      institution: new FormControl(study.institution, [Validators.required]),
+      title: new FormControl(study.title, [Validators.required]),
+      date: new FormControl(study.date, [Validators.required, dateValidator()]),
+      bilingue: new FormControl(study.bilingue, [])
     });
   }
 

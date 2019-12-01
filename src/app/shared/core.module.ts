@@ -4,18 +4,18 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 /* import { JWTInterceptor } from './interceptors/jwt.interceptor'; */
 /* import { JwtExpiredInterceptor } from './interceptors/jwt-expired.interceptor'; */
 
-/* import { StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools'; */
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-/* import { metaReducers, reducers } from './states/root.reducer';
+import { metaReducers, reducers } from './states/root.reducer';
 import { AuthEffects } from './states/auth/effects/auth.effects';
 
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterEffects } from './states/router/effects/router.effects';
 
 import { UserEffects } from './states/user/effects/user.effects';
-import { AppEffects } from './states/app/effects'; */
+import { AppEffects } from './states/app/effects';
 /* import { UsersEffects } from './states/users/effects'; */
 /* import { UsersService } from '../views/users/shared/users.service'; */
 import { ProfileService } from './services/profile.service';
@@ -25,6 +25,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'; */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationsService } from './services/notifications.service';
 import { OffersService } from './services/offers.service';
+import { AuthService } from './services/auth.service';
+import { OffersEffects } from './states/offers';
 
 /* export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -33,7 +35,8 @@ import { OffersService } from './services/offers.service';
 export const CORE_SERVICES: Provider[] = [
   ProfileService,
   OffersService,
-  NotificationsService
+  NotificationsService,
+  AuthService
   /* {
     provide: HTTP_INTERCEPTORS,
     useClass: JWTInterceptor,
@@ -58,16 +61,17 @@ export const CORE_SERVICES: Provider[] = [
 @NgModule({
   imports: [
     BrowserAnimationsModule,
-    HttpClientModule
-    /*     StoreModule.forRoot(reducers, { metaReducers }),
+    HttpClientModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreDevtoolsModule.instrument({ maxAge: 50 }),
     EffectsModule.forRoot([
       AppEffects,
       AuthEffects,
       UserEffects,
+      OffersEffects,
       RouterEffects
-    ]),*/
+    ])
     /*  TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

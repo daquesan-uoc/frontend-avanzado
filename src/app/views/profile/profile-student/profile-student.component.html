@@ -1,4 +1,4 @@
-<div id="contenido">
+<div *ngIf="user" id="contenido">
   <div class="float-left" id="foto-perfil">
     <div>
       <img
@@ -140,4 +140,7 @@
       >Nuevo idioma</a
     >
   </section>
+</div>
+<div *ngIf="!user" id="contenido">
+  <p>Datos están siendo cargados...</p>
 </div>

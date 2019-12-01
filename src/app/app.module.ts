@@ -1,20 +1,12 @@
-import { AppComponent } from './app.component';
-import { CoreModule } from './shared/core.module';
-import { FakeBackendService } from './shared/inmemory-db/fake-backend.service';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './shared/core.module';
+import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app-routing';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './shared/state/user/effects/users.effects';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeBackendService } from './shared/inmemory-db/fake-backend.service';
 
 @NgModule({
   imports: [
@@ -24,18 +16,7 @@ import { UserEffects } from './shared/state/user/effects/users.effects';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(FakeBackendService, {
       dataEncapsulation: false
-    }),
-    StoreModule.forRoot(reducers, {
-      metaReducers, 
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
-      }
-    }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot({stateKey:'router'})
-    //,
-    //EffectsModule.forRoot([UserEffects])
+    })
   ],
   declarations: [AppComponent],
   providers: [],

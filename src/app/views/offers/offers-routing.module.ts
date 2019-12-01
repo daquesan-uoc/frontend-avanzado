@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OffersComponent } from './offers.component';
-import { OffersDetailComponent } from './offers-detail/offers-detail.component';
+import { OffersDetailWrapperComponent } from './offers-detail/offers-detail.component-wrapper';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: OffersDetailComponent
+    component: OffersDetailWrapperComponent
   }
 ];
 

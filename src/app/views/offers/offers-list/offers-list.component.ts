@@ -1,26 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { OffersService } from 'src/app/shared/services/offers.service';
 import { Offer } from 'src/app/shared/models/offer.model';
 import { ProfileService } from 'src/app/shared/services/profile.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-offers-list',
   templateUrl: './offers-list.component.html'
 })
-export class OffersListComponent implements OnInit {
+export class OffersListComponent implements OnChanges {
+  @Input() user: User;
+  @Input() offers: Offer[];
   offersStudy: Offer[] = [];
   offersOther: Offer[] = [];
-  constructor(
-    private profileService: ProfileService,
-    private offersService: OffersService
-  ) {
-    this.selectOffers();
+  constructor() {}
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.user && changes.offers) {
+      this.selectOffers();
+    }
   }
 
   private selectOffers() {
-    const studiesOfUser = this.profileService.user.studies;
-    const offersOfUser = this.profileService.user.offers;
-    this.offersStudy = this.offersService.offers
+    const studiesOfUser = this.user.studies;
+    const offersOfUser = this.user.offers;
+    this.offersStudy = this.offers
       .filter(offer =>
         studiesOfUser.some(study => study.uid === offer.category.uid)
       )
@@ -30,11 +39,8 @@ export class OffersListComponent implements OnInit {
         );
         return { ...offer, subscribe: offerUser };
       });
-
-    this.offersOther = this.offersService.offers.filter(offer =>
+    this.offersOther = this.offers.filter(offer =>
       studiesOfUser.every(study => study.uid !== offer.category.uid)
     );
   }
-
-  ngOnInit() {}
 }

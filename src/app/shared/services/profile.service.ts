@@ -1,29 +1,27 @@
 import { Injectable } from '@angular/core';
 import { AppSettings } from '../app.settings';
 import { HttpClient } from '@angular/common/http';
-import { of, Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../states/store.interface';
+
+import * as UserActions from '../states/user/actions';
 
 @Injectable()
 export class ProfileService {
-  private _user: User = {} as User;
-
   constructor(
-    private http: HttpClient /* , private store$: Store<AppStore> */
+    private http: HttpClient , private store$: Store<AppStore>
   ) {}
 
-  set user(_user) {
-    this._user = _user;
+
+  getUsers(id: number) {
+    return this.http.get<any>(`${AppSettings.API_ENDPOINT_USERS}/${id}`);
   }
-  get user() {
-    return this._user;
-  }
-  loadProfile(): Observable<any /* UserOptions */> {
-    return of(this.user as any);
-    //return this.http.get<UserOptions>(AppSettings.API_ENDPOINT_USER_ME);
+   loadProfile(): Observable<any> {
+    return this.getUsers(1);
   }
   logout(): void {
-    /*  this.store$.dispatch(new UserActions.Logout()); */
+     this.store$.dispatch(new UserActions.Logout());
   }
   public updateProfile(profile: any /* User */): Observable<any /* User */> {
     return this.http.put<any>(AppSettings.API_ENDPOINT_USERS, { ...profile });

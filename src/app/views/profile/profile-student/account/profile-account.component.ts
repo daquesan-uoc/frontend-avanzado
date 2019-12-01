@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../../../shared/services/profile.service';
@@ -11,32 +18,31 @@ import {
   Province
 } from 'src/app/shared/models/user.model';
 import { documentNumberValidator } from 'src/app/shared/directives/document-number-validator.directive';
-import { UserActions } from '../../../../shared/state/user';
-import {Store} from '@ngrx/store';
-import { AppState } from 'src/app/shared/state/root.reducer';
+import { AppStore } from 'src/app/shared/states/store.interface';
+import { Store } from '@ngrx/store';
+import { getProfile } from 'src/app/shared/states/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-account',
   templateUrl: './profile-account.component.html',
   styleUrls: ['./profile-account.component.scss']
 })
-export class ProfileAccountComponent implements OnInit {
+export class ProfileAccountComponent implements OnInit, OnChanges {
+  @Input() user: User;
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onSave: EventEmitter<User> = new EventEmitter<User>();
   rForm: FormGroup;
-  user: User;
   documentsType: DocumentType[];
   municipes: Municipe[];
   provinces: Province[];
 
-  constructor(private router: Router,
-    private profileService: ProfileService,
-    private store: Store<AppState>,
-    private userActions: UserActions
-    ) {
-    this.user = this.profileService.user;
-  }
+  constructor() {}
   ngOnInit() {
-    console.log("ngOnInit");
     this.loadSelectProperties();
+    this.loadFormInstance();
+  }
+  ngOnChanges() {
     this.loadFormInstance();
   }
   public loadSelectProperties(): void {
@@ -95,19 +101,18 @@ export class ProfileAccountComponent implements OnInit {
       documentNumberValidator()
     );
   }
-/*
-  public save() {
-    const user = { ...this.profileService.user, ...this.rForm.value };
-    this.profileService.user = user;
-    this.profileService.updateProfile(user);
-    this.router.navigate(['/admin/profile']);
-  }*/
 
   public save() {
-    console.log("entra al save");
-    this.store.dispatch(this.userActions.saveUser(this.rForm.value));
-
-    this.router.navigate(['/admin/profile']);
+    const { street = '', municipe = '', province = '', ...rest } = {
+      ...this.rForm.value
+    };
+    const address = {
+      street,
+      municipe,
+      province
+    };
+    const user = { ...this.user, address, ...rest };
+    this.onSave.emit(user);
   }
   compareByUID(option1, option2) {
     return option1.uid === (option2 && option2.uid);

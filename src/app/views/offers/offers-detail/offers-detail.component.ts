@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OffersService } from 'src/app/shared/services/offers.service';
 import { Offer } from 'src/app/shared/models/offer.model';
 import { ProfileService } from 'src/app/shared/services/profile.service';
@@ -10,37 +10,35 @@ import { User } from 'src/app/shared/models/user.model';
   templateUrl: './offers-detail.component.html',
   styleUrls: ['./offers-detail.component.scss']
 })
-export class OffersDetailComponent implements OnInit {
-  offer: Offer;
-  user: User;
-  constructor(
-    private profileService: ProfileService,
-    private offersService: OffersService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
-    this.user = this.profileService.user;
-    this.route.params.subscribe(params => {
-      const offers = this.offersService.offers;
+export class OffersDetailComponent {
+  @Input() offer: Offer;
+  @Input() user: User;
+  @Output() subscribeOffer: EventEmitter<User> = new EventEmitter<User>();
+  @Output() unsubscribeOffer: EventEmitter<User> = new EventEmitter<User>();
 
-      const offerID = +params.id;
-      this.offer = (offers.find(offer => offer.id === offerID) || {}) as Offer;
-    });
-  }
+  constructor() {}
 
-  subscribeOffer() {
-    this.user.offers = [...this.user.offers, this.offer];
-    this.router.navigate(['/admin/profile']);
+  subscribe() {
+    const offers = [...this.user.offers, this.offer];
+    const user = {
+      ...this.user,
+      offers
+    };
+    this.subscribeOffer.emit(user);
   }
-  unsubscribeOffer() {
-    this.user.offers = this.user.offers.filter(
+  unsubscribe() {
+    const offers = this.user.offers.filter(
       _offer => _offer.id !== this.offer.id
     );
-    this.router.navigate(['/admin/profile']);
+    const user = {
+      ...this.user,
+      offers
+    };
+    this.unsubscribeOffer.emit(user);
   }
   isSubscribe(): boolean {
-    return !!this.user.offers.find(_offer => this.offer.id === _offer.id);
+    return !!(
+      this.user && this.user.offers.find(_offer => this.offer.id === _offer.id)
+    );
   }
-
-  ngOnInit() {}
 }
