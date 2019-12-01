@@ -1,9 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 offset-sm-3">
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+      <mat-card-header>
+
       <img src="/assets/img/uoc_logo.png" />
 
       <h2>Login</h2>
+    </mat-card-header>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div *ngIf="errorLogin" class="alert alert-danger">
@@ -13,31 +15,35 @@
 
           There is an error in email or password
         </div>
+        <mat-card-content>
 
-        <div class="form-group">
-          <label for="email">Email</label>
+        <mat-form-field>
           <input
+            matInput
+            placeholder="Email"
             type="text"
             id="email"
             formControlName="email"
-            class="form-control"
-            [ngClass]="{
+            [ngClass]="{ 
               'is-invalid': submitted && loginForm.controls.email.errors
             }"
           />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
+        </mat-form-field>
+
+        <mat-form-field>
           <input
+            matInput
+            placeholder="Password"
             type="password"
             id="password"
             formControlName="password"
-            class="form-control"
             [ngClass]="{
               'is-invalid': submitted && loginForm.controls.password.errors
             }"
           />
-        </div>
+        </mat-form-field>
+      </mat-card-content>
+
         <div class="form-group">
           <button [disabled]="loginForm.invalid" class="btn btn-primary">
             Login
@@ -47,6 +53,5 @@
           >
         </div>
       </form>
-    </div>
-  </div>
+  </mat-card>
 </div>
