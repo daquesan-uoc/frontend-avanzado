@@ -23,6 +23,10 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  public errorHandling = (control: string, error: string) => {
+    return this.loginForm.controls[control].hasError(error);
+  }
+
   onSubmit() {
     this.submitted = true;
     this.store$.dispatch(new AuthActions.Identification({...this.loginForm.value}));

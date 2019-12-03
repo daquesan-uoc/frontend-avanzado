@@ -8,13 +8,17 @@
     </mat-card-header>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- CÓDIGO ANTIGUO PEC2
         <div *ngIf="errorLogin" class="alert alert-danger">
           <button type="button" class="close" data-dismiss="alert">
             &times;
+            There is an error in email or password
           </button>
-
+        </div> -->
+        <!-- CÓDIGO NUEVO CON ANGULAR MATERIAL PEC3 -->
+        <mat-error *ngIf="errorLogin">
           There is an error in email or password
-        </div>
+        </mat-error>
 
         <mat-form-field class='full-width'>
           <input
@@ -42,10 +46,14 @@
           />
         </mat-form-field>
 
-        <div fxLayout="row" fxLayoutGap="20px">
-          <button mat-raised-button color="primary" [disabled]="loginForm.invalid" fxLayoutAlign="start center">Login</button>
-          <a routerLink="/forgot-password" fxLayoutAlign="end center">Remember password</a>
+        <div fxLayout="row">
+          <div fxFlex fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
+          </div>
+          <div fxFlex fxLayoutAlign="end center">
+            <a routerLink="/forgot-password">Remember password</a>
+          </div>
         </div>
-    </form>
+      </form>
   </mat-card>
 </div>
