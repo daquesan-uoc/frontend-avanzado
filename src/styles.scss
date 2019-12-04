@@ -2,3 +2,25 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.login-wrapper {
+  height: 100%;
+}
+
+.login-wrapper mat-card-header {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.login-title {
+  background-color: darkblue;
+  color: white;
+  padding-left: 10px;
+  padding: 10px 0 10px 10px;
+  margin-bottom: 10px;
+}
+
+.login-wrapper mat-form-field {
+  width: 100%;
+}
