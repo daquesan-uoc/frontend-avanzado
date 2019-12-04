@@ -6,6 +6,7 @@
     [notificPanel]="notificationPanel"
   >
   </app-header-top> -->
+  <!--
 <div class="row">
   <div class="col-3">
     <ul>
@@ -25,5 +26,38 @@
   <div class="col-9">
     <router-outlet></router-outlet>
   </div>
-</div>
+</div>-->
 <!-- </div> -->
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" opened>
+    <div>
+      <div fxLayoutAlign="start center">
+        <mat-icon>exit_to_app</mat-icon>
+        <a routerLink="/">Logout</a>
+      </div>
+      <div fxLayoutAlign="start center">
+        <mat-icon>dashboard</mat-icon>
+        <a routerLink="/admin/">Dashboard</a>
+      </div>
+      <div fxLayoutAlign="start center">
+        <mat-icon>account_box</mat-icon>
+        <a routerLink="/admin/profile">Profile</a>
+      </div>
+      <div fxLayoutAlign="start center">
+        <mat-icon>work</mat-icon>
+        <a routerLink="/admin/offers">Offers</a>
+      </div>
+      <div fxLayoutAlign="start center">
+        <mat-icon>settings</mat-icon>
+        <a routerLink="/admin/config">Configuración</a>
+      </div>
+      <div fxLayoutAlign="start center">
+        <mat-icon>folder_shared</mat-icon>
+        <a [routerLink]="['/admin/offers/my-offers']">Mis ofertas</a>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

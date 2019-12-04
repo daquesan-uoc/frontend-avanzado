@@ -3,6 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+// Login
 .login-wrapper {
   height: 100%;
 }
@@ -23,4 +24,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .login-wrapper mat-form-field {
   width: 100%;
+}
+
+// Dashboard
+mat-sidenav {
+  padding: 10px 50px 0 10px;
 }
