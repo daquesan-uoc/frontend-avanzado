@@ -6,14 +6,14 @@
     <mat-card-content>
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
         <div fxFlex fxLayout="column" fxFlex="30%" fxLayoutAlign="center" class="student-avatar">
-          <div *ngIf="user" id="contenido" fxFlex fxLayout="row" fxLayoutAlign="center">
+          <div *ngIf="user" id="contenido" fxFlex fxLayout="row wrap" fxLayoutAlign="center">
             <div fxFlex fxLayout="row" fxLayoutAlign="center" class="student-avatar">
               <img
                 class="student-avatar"
                 src="{{ user.avatar_hash }}"
               />
             </div>
-            <div fxFlex fxLayout="row" fxLayoutAlign="center" class="student-avatar">
+            <div fxFlex fxLayout="row wrap" fxLayoutAlign="center" class="student-avatar">
               {{ user.name + ' ' + user.surname }}
             </div>
           </div>
@@ -52,7 +52,7 @@
             <textarea matInput readonly placeholder="Otras competencias">{{ user.otherCompetences }}</textarea>
           </mat-form-field>    
         </div>
-        <div fxFlex fxLayout="row" fxLayoutAlign="center">
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center">
           <a mat-raised-button color="primary" [routerLink]="['/admin/profile/profile-student/account']"><mat-icon>edit</mat-icon>Modificar</a>
         </div>
       </div>
@@ -64,63 +64,63 @@
     </mat-card-header>
     <mat-card-content>
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
-        <table mat-table [dataSource]="user.studies" class="mat-elevation-z8">
+        <mat-table [dataSource]="user.studies" class="mat-elevation-z8">
           <ng-container matColumnDef="type">
-            <th mat-header-cell *matHeaderCellDef> Tipo </th>
-            <td mat-cell *matCellDef="let element"> {{study.level.name}} </td>
+            <mat-header-cell fxFlex="20%" *matHeaderCellDef> Tipo </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.level.name}} </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="level">
-            <th mat-header-cell *matHeaderCellDef> Nivel </th>
-            <td mat-cell *matCellDef="let element"> {{study.grade?.name}} </td>
+            <mat-header-cell *matHeaderCellDef> Nivel </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.grade?.name}} </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef> T&iacute;tulo </th>
-            <td mat-cell *matCellDef="let element"> {{study.title.name || study.title}} </td>
+            <mat-header-cell *matHeaderCellDef> T&iacute;tulo </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.title.name || study.title}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="center">
-            <th mat-header-cell *matHeaderCellDef> Centro </th>
-            <td mat-cell *matCellDef="let element"> {{study.institution.name || study.institution}} </td>
+            <mat-header-cell *matHeaderCellDef> Centro </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.institution.name || study.institution}} </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef> Fecha </th>
-            <td mat-cell *matCellDef="let element"> {{study.date}} </td>
+            <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.date}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="certificate">
-            <th mat-header-cell *matHeaderCellDef> Certificado </th>
-            <td mat-cell *matCellDef="let element"> {{study.certificate ? 'Sí' : 'No'}} </td>
+            <mat-header-cell *matHeaderCellDef> Certificado </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.certificate ? 'Sí' : 'No'}} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="biligual">
-            <th mat-header-cell *matHeaderCellDef> Bilingüe </th>
-            <td mat-cell *matCellDef="let element"> {{study.bilingue ? 'Sí' : 'No'}} </td>
+          <ng-container matColumnDef="bilingual">
+            <mat-header-cell *matHeaderCellDef> Bilingüe </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.bilingue ? 'Sí' : 'No'}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="dual">
-            <th mat-header-cell *matHeaderCellDef> Dual </th>
-            <td mat-cell *matCellDef="let element"> {{study.dual ? 'Sí' : 'No'}} </td>
+            <mat-header-cell *matHeaderCellDef> Dual </mat-header-cell>
+            <mat-cell *matCellDef="let study"> {{study.dual ? 'Sí' : 'No'}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell fxLayoutAlign="end center" *matCellDef="let study">
               <a [routerLink]="['/admin/profile/profile-student/study', study.uid]">
                 <mat-icon>edit</mat-icon>
-              </a>              |
-              <a style="cursor:pointer" (click)="deleteStudy(study.uid)">
-                Borrar
               </a>
-            </td>
+              <a style="cursor:pointer" (click)="deleteStudy(study.uid)">
+                <mat-icon>delete</mat-icon>
+              </a>
+            </mat-cell>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <div fxFlex fxLayout="row" fxLayoutAlign="center">
+          <mat-header-row *matHeaderRowDef="displayedStudiesColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedStudiesColumns;"></mat-row>
+        </mat-table>
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center">
           <a mat-raised-button color="primary" [routerLink]="['/admin/profile/profile-student/study']"><mat-icon>edit</mat-icon>Nueva formaci&oacute;n</a>
         </div>
       </div>
@@ -134,7 +134,7 @@
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
         <mat-table [dataSource]="user.languages" class="mat-elevation-z8">
           <ng-container matColumnDef="level">
-            <mat-header-cell fxFlex="20%" *matHeaderCellDef> Nivel </mat-header-cell>
+            <mat-header-cell fxFlex="20%" fxLayoutAlign="start center" *matHeaderCellDef> Nivel </mat-header-cell>
             <mat-cell fxFlex="20%" *matCellDef="let language"> {{language.level.name}} </mat-cell>
           </ng-container>
     
@@ -150,12 +150,12 @@
     
           <ng-container matColumnDef="actions">
             <mat-header-cell fxFlex="70px" *matHeaderCellDef></mat-header-cell>
-            <mat-cell fxFlex="70px" fxLayoutAlign="end" *matCellDef="let language">
+            <mat-cell fxFlex="70px" fxLayoutAlign="end center" *matCellDef="let language">
               <a [routerLink]="['/admin/profile/profile-student/language',language.uid]">
                 <mat-icon>edit</mat-icon>
               </a>
               <a style="cursor:pointer" (click)="deleteLanguage(language.uid)">
-                <mat-icon>delete_outline</mat-icon>
+                <mat-icon>delete</mat-icon>
               </a>
             </mat-cell>
           </ng-container>
@@ -163,8 +163,8 @@
           <mat-header-row *matHeaderRowDef="displayedLanguagesColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedLanguagesColumns;"></mat-row>
         </mat-table>
-        <div fxFlex fxLayout="row" fxLayoutAlign="center">
-            <a mat-raised-button color="primary" [routerLink]="['/admin/profile/profile-student/language']">Nuevo idioma</a>
+        <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+            <a mat-raised-button color="primary" [routerLink]="['/admin/profile/profile-student/language']"><mat-icon>edit</mat-icon>Nuevo idioma</a>
           </div>
       </div>
     </mat-card-content>

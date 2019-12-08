@@ -37,8 +37,12 @@ mat-sidenav a {
   color: white;
 }
 
+mat-sidenav a:hover {
+  color: $mat-sidenav-selected-color;
+}
+
 mat-sidenav mat-icon {
-  color: yellow;
+  color: $mat-sidenav-mat-icon-color;
   padding: 20px 10px 20px 0;
 }
 
@@ -74,4 +78,17 @@ mat-sidenav mat-icon {
 
 .student-avatar {
   display: block;
+}
+
+mat-table {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+mat-table mat-icon {
+  color: blue;
+}
+
+mat-table mat-icon:hover {
+  color: $card-title-color;
 }
