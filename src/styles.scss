@@ -67,7 +67,7 @@ mat-sidenav-content {
   margin-bottom: 10px;
 }
 
-.profile-title {
+.menu-title {
   width: 100%;
   background-color: $card-title-color;
   color: yellow;
@@ -95,4 +95,21 @@ mat-table mat-icon {
 
 mat-table mat-icon:hover {
   color: $card-title-color;
+}
+
+// Offers
+.offers-wrapper {
+  background-color: $wrapper-background-color;
+}
+
+.offers-wrapper mat-card {
+  width: 100%;
+  margin: 0 10px 0 10px;
+}
+
+.offers-wrapper mat-card-header {
+  background-color: $card-title-color;
+  color: white;
+  padding: 10px 0 10px 10px;
+  margin-bottom: 10px;
 }

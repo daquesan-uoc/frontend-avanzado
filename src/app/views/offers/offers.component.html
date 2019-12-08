@@ -1,13 +1,14 @@
-<h2>
-  Offers
-</h2>
-
-<app-offers-list
-  [user]="user$ | async"
-  [offers]="offers$ | async"
-  *ngIf="isOffersList"
-></app-offers-list>
-<app-offers-profile
-  [user]="user$ | async"
-  *ngIf="!isOffersList"
-></app-offers-profile>
+<div class="profile-wrapper" fxLayout="row wrap" fxLayoutAlign="center center">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center" class="menu-title">
+    <h2>Offers</h2>
+  </div>  
+  <app-offers-list
+    [user]="user$ | async"
+    [offers]="offers$ | async"
+    *ngIf="isOffersList"
+  ></app-offers-list>
+  <app-offers-profile
+    [user]="user$ | async"
+    *ngIf="!isOffersList"
+  ></app-offers-profile>
+</div>
