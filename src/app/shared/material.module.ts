@@ -18,7 +18,8 @@ import {
   MatProgressSpinnerModule,
   MatRippleModule,
   MatDialogModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
 } from '@angular/material';
 
 @NgModule({
@@ -41,7 +42,8 @@ import {
       MatProgressSpinnerModule,
       MatRippleModule,
       MatDialogModule,
-      MatInputModule
+      MatInputModule,
+      MatTableModule
   ],
   exports: [
     FlexLayoutModule,
@@ -62,7 +64,8 @@ import {
     MatProgressSpinnerModule,
     MatRippleModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
 })
 

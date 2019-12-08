@@ -13,6 +13,9 @@ export class ProfileStudentComponent {
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onDeleteLanguage: EventEmitter<User> = new EventEmitter();
 
+  displayedStudiesColumns: string[] = ['type', 'level', 'title', 'center', 'date', 'certificate', 'bilingual', 'dual', 'actions'];
+  displayedLanguagesColumns: string[] = ['level', 'language', 'date', 'actions'];
+
   constructor() {}
 
   deleteStudy(studyID: number) {
