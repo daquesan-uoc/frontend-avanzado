@@ -16,6 +16,8 @@ export class OffersDetailComponent {
   @Output() subscribeOffer: EventEmitter<User> = new EventEmitter<User>();
   @Output() unsubscribeOffer: EventEmitter<User> = new EventEmitter<User>();
 
+  displayedTitleColumns: string[] = ['title'];
+
   constructor() {}
 
   subscribe() {

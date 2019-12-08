@@ -1,12 +1,49 @@
-<h2>
-  Offers Detail
-</h2>
+<div class="form-wrapper" fxFlex="60%" fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title fxFlex fxLayoutAlign="start center">Offers Detail</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+          <mat-form-field>
+            <input matInput readonly placeholder="Puesto" value="{{offer.job.name}}"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly placeholder="Descripci&oacute;n" value="{{offer.job.description}}"/>
+          </mat-form-field>          
+          <mat-form-field>
+            <input matInput readonly placeholder="Empresa" value="{{offer.company.name}}"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly placeholder="Fecha" value="{{offer.date}}"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly placeholder="Provincia" value="{{offer.province.name}}"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly placeholder="Municipio" value="{{offer.municipe.name}}"/>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput readonly placeholder="Familia" value="{{offer.category.name}}"/>
+          </mat-form-field>
 
-<pre>{{ offer | json }} </pre>
-
-<button *ngIf="!isSubscribe()" class="btn btn-primary" (click)="subscribe()">
-  Inscribirse
-</button>
-<button *ngIf="isSubscribe()" class="btn btn-danger" (click)="unsubscribe()">
-  Eliminar oferta
-</button>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center">  
+          <mat-table [dataSource]="offer.title" class="offer-title mat-elevation-z8">
+            <ng-container matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef> Titulaciones Requeridas </mat-header-cell>
+              <mat-cell *matCellDef="let title"> {{title.name}} </mat-cell>
+            </ng-container>
+  
+            <mat-header-row *matHeaderRowDef="displayedTitleColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedTitleColumns;"></mat-row>
+          </mat-table>
+  
+          <div fxLayout fxLayoutAlign="center">
+            <button mat-raised-button color="primary" *ngIf="!isSubscribe()" (click)="subscribe()">Inscribirse</button>
+            <button mat-raised-button color="accent" *ngIf="isSubscribe()" (click)="unsubscribe()">Eliminar oferta</button>
+          </div>
+        </div>
+      </div>     
+    </mat-card-content>
+  </mat-card>      
+</div>

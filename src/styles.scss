@@ -46,25 +46,8 @@ mat-sidenav mat-icon {
   padding: 20px 10px 20px 0;
 }
 
-// Profile
-.profile-wrapper {
-  background-color: $wrapper-background-color;
-}
-
 mat-sidenav-content {
   background-color: $wrapper-background-color;
-}
-
-.profile-wrapper mat-card {
-  width: 100%;
-  margin: 0 10px 0 10px;
-}
-
-.profile-wrapper mat-card-header {
-  background-color: $card-title-color;
-  color: white;
-  padding: 10px 0 10px 10px;
-  margin-bottom: 10px;
 }
 
 .menu-title {
@@ -73,15 +56,6 @@ mat-sidenav-content {
   color: yellow;
   border-radius: 5px;
   margin: 10px;
-}
-
-// Profile student
-.profile-wrapper mat-form-field {
-  width: 90%;
-}
-
-.student-avatar {
-  display: block;
 }
 
 mat-table {
@@ -97,19 +71,28 @@ mat-table mat-icon:hover {
   color: $card-title-color;
 }
 
-// Offers
-.offers-wrapper {
+// Profile
+.form-wrapper {
   background-color: $wrapper-background-color;
 }
 
-.offers-wrapper mat-card {
+.form-wrapper mat-card {
   width: 100%;
-  margin: 0 10px 0 10px;
+  margin: 10px;
 }
 
-.offers-wrapper mat-card-header {
+.form-wrapper mat-card-header {
   background-color: $card-title-color;
   color: white;
   padding: 10px 0 10px 10px;
   margin-bottom: 10px;
+}
+
+// Profile student
+.form-wrapper mat-form-field {
+  width: 90%;
+}
+
+.student-avatar {
+  display: block;
 }
