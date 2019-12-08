@@ -4,7 +4,8 @@ import {
   Input,
   OnChanges,
   Output,
-  EventEmitter
+  EventEmitter,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +27,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-profile-account',
   templateUrl: './profile-account.component.html',
-  styleUrls: ['./profile-account.component.scss']
+  styleUrls: ['./profile-account.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileAccountComponent implements OnInit, OnChanges {
   @Input() user: User;
