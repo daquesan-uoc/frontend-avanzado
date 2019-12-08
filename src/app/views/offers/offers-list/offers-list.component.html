@@ -1,56 +1,104 @@
-<h3>Cumple con la Titulación (Familia)</h3>
+<div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title fxFlex fxLayoutAlign="start center">Cumple con la Titulaci&oacute;n (Familia)</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-table [dataSource]="offersStudy" class="mat-elevation-z8">
+          <ng-container matColumnDef="job">
+            <mat-header-cell fxFlex="15%" *matHeaderCellDef> Puesto </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let offer"> {{offer.job.name}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="company">
+            <mat-header-cell fxFlex="15%" *matHeaderCellDef> Empresa </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let offer"> {{offer.company.name}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="category">
+            <mat-header-cell fxFlex="28%" *matHeaderCellDef> Familia </mat-header-cell>
+            <mat-cell fxFlex="28%" *matCellDef="let offer"> {{offer.category.name}} </mat-cell>
+          </ng-container>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-    <tr>
-      <th>Puesto</th>
-      <th>Empresa</th>
-      <th>Familia</th>
-      <th>Fecha</th>
-      <th>Provincia</th>
-      <th>Municipio</th>
-      <th>Inscrito</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let offer of offersStudy">
-      <td>{{ offer.job.name }}</td>
-      <td>{{ offer.company.name }}</td>
-      <td>{{ offer.category.name }}</td>
-      <td>{{ offer.date }}</td>
-      <td>{{ offer.province.name }}</td>
-      <td>{{ offer.municipe.name }}</td>
-      <td>{{ offer.subscribe ? 'Sí' : 'No' }}</td>
-      <td>
-        <a style="cursor:pointer" [routerLink]="[offer.id]">Ver Detalle</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <ng-container matColumnDef="date">
+            <mat-header-cell fxFlex="10%" fxLayoutAlign="center center" *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell fxFlex="10%" fxLayoutAlign="center center" *matCellDef="let offer"> {{offer.date}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="province">
+            <mat-header-cell fxFlex="10%" *matHeaderCellDef> Provincia </mat-header-cell>
+            <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.province.name}} </mat-cell>
+          </ng-container>
 
-<h3>Otras Ofertas</h3>
+          <ng-container matColumnDef="municipe">
+              <mat-header-cell fxFlex="10%" *matHeaderCellDef> Municipio </mat-header-cell>
+              <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.municipe.name}} </mat-cell>
+            </ng-container>
 
-<table class="table table-bordered table-striped">
-  <thead class="thead-light">
-    <tr>
-      <th>Puesto</th>
-      <th>Empresa</th>
-      <th>Familia</th>
-      <th>Fecha</th>
-      <th>Provincia</th>
-      <th>Municipio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let offer of offersOther">
-      <td>{{ offer.job.name }}</td>
-      <td>{{ offer.company.name }}</td>
-      <td>{{ offer.category.name }}</td>
-      <td>{{ offer.date }}</td>
-      <td>{{ offer.province.name }}</td>
-      <td>{{ offer.municipe.name }}</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+          <ng-container matColumnDef="subscribe">
+            <mat-header-cell fxFlex="5%" fxLayoutAlign="center center" *matHeaderCellDef> Inscrito </mat-header-cell>
+            <mat-cell fxFlex="5%" fxLayoutAlign="center center" *matCellDef="let offer"> {{offer.subscribe ? 'Sí' : 'No'}} </mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="actions">
+            <mat-header-cell fxFlex="7%" *matHeaderCellDef></mat-header-cell>
+            <mat-cell fxFlex="7%" fxLayoutAlign="end center" *matCellDef="let offer">
+              <a style="cursor:pointer" [routerLink]="[offer.id]">
+                <mat-icon>visibility</mat-icon>
+              </a>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedOffersColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedOffersColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title fxFlex fxLayoutAlign="start center">Otras Ofertas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-table [dataSource]="offersOther" class="mat-elevation-z8">
+          
+          <ng-container matColumnDef="job">
+            <mat-header-cell fxFlex="15%" *matHeaderCellDef> Puesto </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let offer"> {{offer.job.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="company">
+            <mat-header-cell fxFlex="15%" *matHeaderCellDef> Empresa </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let offer"> {{offer.company.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="category">
+            <mat-header-cell fxFlex="40%" *matHeaderCellDef> Familia </mat-header-cell>
+            <mat-cell fxFlex="40%" *matCellDef="let offer"> {{offer.category.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <mat-header-cell fxFlex="10%" fxLayoutAlign="center center" *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell fxFlex="10%" fxLayoutAlign="center center" *matCellDef="let offer"> {{offer.date}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="province">
+            <mat-header-cell fxFlex="10%" *matHeaderCellDef> Provincia </mat-header-cell>
+            <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.province.name}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="municipe">
+            <mat-header-cell fxFlex="10%" *matHeaderCellDef> Municipio </mat-header-cell>
+            <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.municipe.name}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedOtherColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedOtherColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

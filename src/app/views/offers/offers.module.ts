@@ -7,6 +7,7 @@ import { OffersDetailComponent } from './offers-detail/offers-detail.component';
 import { OffersListComponent } from './offers-list/offers-list.component';
 import { OffersProfileComponent } from './offers-profile/offers-profile.component';
 import { OffersDetailWrapperComponent } from './offers-detail/offers-detail.component-wrapper';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { OffersDetailWrapperComponent } from './offers-detail/offers-detail.comp
     OffersDetailComponent,
     OffersDetailWrapperComponent
   ],
-  imports: [CommonModule, OffersRoutingModule]
+  imports: [CommonModule, OffersRoutingModule, SharedModule]
 })
 export class OffersModule {}

@@ -19,6 +19,10 @@ export class OffersListComponent implements OnChanges {
   @Input() offers: Offer[];
   offersStudy: Offer[] = [];
   offersOther: Offer[] = [];
+
+  displayedOffersColumns: string[] = ['job', 'company', 'category', 'date', 'province', 'municipe', 'subscribe', 'actions'];
+  displayedOtherColumns: string[] = ['job', 'company', 'category', 'date', 'province', 'municipe'];
+
   constructor() {}
   ngOnChanges(changes: SimpleChanges) {
     if (changes.user && changes.offers) {
