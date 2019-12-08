@@ -17,7 +17,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .login-title {
   background-color: darkblue;
   color: white;
-  padding-left: 10px;
   padding: 10px 0 10px 10px;
   margin-bottom: 10px;
 }
@@ -40,4 +39,30 @@ mat-sidenav a {
 mat-icon {
   color: yellow;
   padding: 20px 10px 20px 0;
+}
+
+// Profile
+.profile-wrapper mat-card {
+  width: 100%;
+  margin: 0 10px 0 10px;
+}
+
+.profile-wrapper mat-card-header {
+  background-color: darkblue;
+  color: white;
+  padding: 10px 0 10px 10px;
+  margin-bottom: 10px;
+}
+
+.profile-title {
+  width: 100%;
+  background-color: darkblue;
+  color: yellow;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+// Profile student
+.profile-wrapper mat-form-field {
+  width: 90%;
 }
