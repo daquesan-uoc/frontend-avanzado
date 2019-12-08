@@ -6,8 +6,8 @@
     <mat-card-content>
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
         <form [formGroup]="rForm" (submit)="save()">
-          <div fxLayout="row">
-            <div fxFlex fxLayout="column" fxFlex="30%" fxLayoutAlign="center" class="student-avatar">
+          <div fxLayout="row wrap">
+            <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center" class="student-avatar">
               <div *ngIf="user" id="contenido" fxFlex fxLayout="row wrap" fxLayoutAlign="center">
                 <div fxFlex fxLayout="row" fxLayoutAlign="center" class="student-avatar">
                   <img
@@ -20,7 +20,7 @@
                 </div>
               </div>
             </div>
-            <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
+            <div fxFlex="35%" fxLayout="column" fxLayoutAlign="center start">
                <mat-form-field>
                 <input
                   matInput
@@ -32,17 +32,6 @@
                   Corrige el error en Nombre
                 </mat-error>
               </mat-form-field>
-              <mat-form-field>
-                <input
-                  matInput
-                  placeholder="Apellidos *"
-                  id="surname"
-                  formControlName="surname"
-                />
-                <mat-error *ngIf="rForm.controls.surname.errors">
-                  Corrige el error en Apellidos
-                </mat-error>
-              </mat-form-field>  
               <mat-form-field>
                 <input
                   matInput
@@ -104,7 +93,18 @@
                 />
               </mat-form-field>              
             </div>
-            <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
+            <div fxFlex="35%" fxLayout="column" fxLayoutAlign="center start">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Apellidos *"
+                  id="surname"
+                  formControlName="surname"
+                />
+                <mat-error *ngIf="rForm.controls.surname.errors">
+                  Corrige el error en Apellidos
+                </mat-error>
+              </mat-form-field>
               <mat-form-field>
                 <input
                   matInput
@@ -152,7 +152,7 @@
               </mat-form-field>              
             </div>
           </div>
-          <div fxLayout="row">
+          <div fxLayout="row wrap">
             <div fxFlex fxLayoutAlign="center center">
               <button type="submit" mat-raised-button color="primary" [disabled]="rForm.invalid"><mat-icon>save</mat-icon>Guardar</button>
             </div>

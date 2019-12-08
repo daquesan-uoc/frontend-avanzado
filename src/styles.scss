@@ -51,6 +51,10 @@ mat-sidenav mat-icon {
   background-color: $wrapper-background-color;
 }
 
+mat-sidenav-content {
+  background-color: $wrapper-background-color;
+}
+
 .profile-wrapper mat-card {
   width: 100%;
   margin: 0 10px 0 10px;
