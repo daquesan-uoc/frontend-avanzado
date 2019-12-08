@@ -12,6 +12,9 @@
               {{ level.name }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="rForm.controls.level.errors">
+            Corrige el error en Nivel
+          </mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Idioma</mat-label>
@@ -20,6 +23,9 @@
               {{ name.name }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="rForm.controls.name.errors">
+            Corrige el error en Idioma
+          </mat-error>          
         </mat-form-field>
         <mat-form-field>
           <input
