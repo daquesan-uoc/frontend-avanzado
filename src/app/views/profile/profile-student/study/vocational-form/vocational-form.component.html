@@ -1,87 +1,58 @@
 <form [formGroup]="rForm" (submit)="submit()">
-  <div class="form-group">
-    <label for="institution">Centro educativo</label>
-    <select
-      [compareWith]="compareInstitution"
-      class="col-sm-10 form-control"
-      name="institution"
-      formControlName="institution"
-    >
-      <option [ngValue]="institution" *ngFor="let institution of institutions">
-        {{ institution.name }}</option
-      >
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="category">Familia profesional</label>
-    <select
-      class="col-sm-10 form-control"
-      name="category"
-      formControlName="category"
-      [compareWith]="compareCategory"
-    >
-      <option [ngValue]="category" *ngFor="let category of categories">
-        {{ category.name }}</option
-      >
-    </select>
-  </div>
+  <mat-form-field>
+    <mat-label>Centro educativo</mat-label>
+    <mat-select [compareWith]="compareInstitution" formControlName="institution">
+      <mat-option [value]="institution" *ngFor="let institution of institutions">
+        {{ institution.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="grade">Nivel</label>
-    <select
-      class="col-sm-10 form-control"
-      name="grade"
-      formControlName="grade"
-      [compareWith]="compareGrade"
-    >
-      <option [ngValue]="grade" *ngFor="let grade of grades">
-        {{ grade.name }}</option
-      >
-    </select>
-  </div>
+  <mat-form-field>
+    <mat-label>Familia profesional</mat-label>
+    <mat-select [compareWith]="compareCategory" formControlName="category">
+      <mat-option [value]="category" *ngFor="let category of categories">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="title">Título</label>
-    <select
-      class="col-sm-10 form-control"
-      name="title"
-      formControlName="title"
-      [compareWith]="compareTitle"
-    >
-      <option [ngValue]="title" *ngFor="let title of titles">
-        {{ title.name }}</option
-      >
-    </select>
-  </div>
+  <mat-form-field>
+    <mat-label>Nivel</mat-label>
+    <mat-select [compareWith]="compareGrade" formControlName="grade">
+      <mat-option [value]="grade" *ngFor="let grade of grades">
+        {{ grade.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="date">Fecha de obtención del título</label>
+  <mat-form-field>
+    <mat-label>T&iacute;tulo</mat-label>
+    <mat-select [compareWith]="compareTitle" formControlName="title">
+      <mat-option [value]="title" *ngFor="let title of titles">
+        {{ title.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
     <input
-      type="text"
-      name="date"
-      class="col-sm-10 form-control"
+      matInput
+      placeholder="Fecha de obtención del t&iacute;tulo *"
+      id="date"
       formControlName="date"
     />
+    <mat-error *ngIf="rForm.controls.date.errors">
+      Corrige el error en Fecha de obtención del t&iacute;tulo
+    </mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="bilingue">Bilingüe</mat-checkbox>
+  <mat-checkbox formControlName="dual">Dual</mat-checkbox>
+
+  <div fxLayout="row wrap">
+    <div fxFlex fxLayoutAlign="center center">
+      <button type="submit" mat-raised-button color="primary" [disabled]="rForm.invalid"><mat-icon>save</mat-icon>Guardar</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="bilingue">Bilingue</label>
-    <input
-      type="checkbox"
-      name="bilingue"
-      class="form-check-input"
-      formControlName="bilingue"
-    />
-  </div>
-  <div class="form-group">
-    <label for="dual">Dual</label>
-    <input
-      type="checkbox"
-      name="dual"
-      class="form-check-input"
-      formControlName="dual"
-    />
-  </div>
-  <button class="btn btn-primary" type="submit" [disabled]="rForm.invalid">
-    Guardar
-  </button>
 </form>
