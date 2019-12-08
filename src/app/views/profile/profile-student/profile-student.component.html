@@ -1,59 +1,61 @@
 <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
-<mat-card>
-  <mat-card-header>
-    <mat-card-title fxFlex fxLayoutAlign="start center">Datos personales</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-<div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
-  <div fxFlex fxLayout="column" fxFlex="30%" fxLayoutAlign="center">
-    <div *ngIf="user" id="contenido" fxFlex fxLayout="row wrap" fxLayoutAlign="center">
-      <!--<div class="float-left" id="foto-perfil">-->
-        <div fxFlex fxLayout="row" fxLayoutAlign="center">
-          <img
-            class="img-fluid img-profile rounded-circle mx-auto mb-2"
-            src="{{ user.avatar_hash }}"
-          />
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title fxFlex fxLayoutAlign="start center">Datos personales</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+      <div fxFlex fxLayout="column" fxFlex="30%" fxLayoutAlign="center" class="student-avatar">
+        <div *ngIf="user" id="contenido" fxFlex fxLayout="row" fxLayoutAlign="center">
+          <div fxFlex fxLayout="row" fxLayoutAlign="center" class="student-avatar">
+            <img
+              class="student-avatar"
+              src="{{ user.avatar_hash }}"
+            />
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutAlign="center" class="student-avatar">
+            {{ user.name + ' ' + user.surname }}
+          </div>
         </div>
-        <div fxFlex fxLayout="row" fxLayoutAlign="center">
-          {{ user.name + ' ' + user.surname }}
-        </div>
-      <!--</div>-->
-    </div>
-  </div>
-  <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
-    <mat-form-field>
-      <input matInput readonly placeholder="Email" value="{{ user.email }}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput readonly placeholder="Fecha de nacimiento" value="{{ user.birthdate }}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput readonly placeholder="Tel&eacute;fono" value="{{ user.phone }}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput readonly placeholder="NIF/NIE" value="{{ user.documentNumber }}">
-    </mat-form-field>    
-    <mat-form-field>
-      <input matInput readonly placeholder="Permisos de conducir" value="{{ user.license }}">
-    </mat-form-field>   
-  </div>
-  <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
-    <mat-form-field>
-      <input matInput readonly placeholder="Direcci&oacute;n" value="{{ user.address.street }}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput readonly placeholder="Municipio" value="{{ user.address.municipe.name }}">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput readonly placeholder="Provincia" value="{{ user.address.province.name }}">
-    </mat-form-field>
-    <mat-form-field>
-      <textarea matInput readonly placeholder="Acerca de mi...">{{ user.aboutMe }}</textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea matInput readonly placeholder="Otras competencias">{{ user.otherCompetences }}</textarea>
-    </mat-form-field>    
-  </div>
+      </div>
+      <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
+        <mat-form-field>
+          <input matInput readonly placeholder="Email" value="{{ user.email }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput readonly placeholder="Fecha de nacimiento" value="{{ user.birthdate }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput readonly placeholder="Tel&eacute;fono" value="{{ user.phone }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput readonly placeholder="NIF/NIE" value="{{ user.documentNumber }}">
+        </mat-form-field>    
+        <mat-form-field>
+          <input matInput readonly placeholder="Permisos de conducir" value="{{ user.license }}">
+        </mat-form-field>   
+      </div>
+      <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
+        <mat-form-field>
+          <input matInput readonly placeholder="Direcci&oacute;n" value="{{ user.address.street }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput readonly placeholder="Municipio" value="{{ user.address.municipe.name }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput readonly placeholder="Provincia" value="{{ user.address.province.name }}">
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput readonly placeholder="Acerca de mi...">{{ user.aboutMe }}</textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput readonly placeholder="Otras competencias">{{ user.otherCompetences }}</textarea>
+        </mat-form-field>    
+      </div>
+  
+  
+
+
   <section style="clear:both;padding-bottom:4em;"></section>
 
   <h2>Formaci&oacute;n acad&eacute;mica</h2>
@@ -134,10 +136,10 @@
       >Nuevo idioma</a
     >
   </section>
-</div>
-<div *ngIf="!user" id="contenido">
-  <p>Datos están siendo cargados...</p>
-</div>
-</mat-card-content>
-</mat-card>
+    </div>
+      <div *ngIf="!user" id="contenido">
+        <p>Datos están siendo cargados...</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'styles-variables';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -28,7 +29,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // Dashboard
 mat-sidenav {
   padding: 10px 50px 0 10px;
-  background-color: purple!important;
+  background-color: $sidenav-background-color!important;
 }
 
 mat-sidenav a {
@@ -42,13 +43,17 @@ mat-icon {
 }
 
 // Profile
+.profile-wrapper {
+  background-color: $wrapper-background-color;
+}
+
 .profile-wrapper mat-card {
   width: 100%;
   margin: 0 10px 0 10px;
 }
 
 .profile-wrapper mat-card-header {
-  background-color: darkblue;
+  background-color: $card-title-color;
   color: white;
   padding: 10px 0 10px 10px;
   margin-bottom: 10px;
@@ -56,7 +61,7 @@ mat-icon {
 
 .profile-title {
   width: 100%;
-  background-color: darkblue;
+  background-color: $card-title-color;
   color: yellow;
   border-radius: 5px;
   margin: 10px;
@@ -65,4 +70,8 @@ mat-icon {
 // Profile student
 .profile-wrapper mat-form-field {
   width: 90%;
+}
+
+.student-avatar {
+  display: block;
 }
