@@ -11,6 +11,7 @@ import { User } from 'src/app/shared/models/user.model';
 export class OffersProfileComponent implements OnChanges {
   @Input() user: User;
   offers: Offer[] = [];
+  displayedColumns: string[] = ['job', 'company', 'category', 'date', 'provincie', 'municipe', 'actions'];
   constructor() {}
   ngOnChanges() {
     this.offers = this.user.offers;

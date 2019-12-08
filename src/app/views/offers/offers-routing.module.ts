@@ -9,7 +9,7 @@ const routes: Routes = [
     component: OffersComponent
   },
   {
-    path: 'my-offers',
+    path: 'offers-profile',
     component: OffersComponent,
     data: { my_offers: true }
   },

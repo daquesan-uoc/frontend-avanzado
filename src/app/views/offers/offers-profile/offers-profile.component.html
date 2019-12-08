@@ -1,4 +1,61 @@
-<h3>Mis Ofertas</h3>
+<div class="form-wrapper" fxFlex="60%" fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title fxFlex fxLayoutAlign="start center">My Offers</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-table [dataSource]="offers" class="mat-elevation-z8">
+          <ng-container matColumnDef="job">
+              <mat-header-cell fxFlex="25%" *matHeaderCellDef> Puesto </mat-header-cell>
+              <mat-cell  fxFlex="25%" *matCellDef="let offer"> {{offer.job.name}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="company">
+              <mat-header-cell fxFlex="10%" *matHeaderCellDef> Empresa </mat-header-cell>
+              <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.company.name}} </mat-cell>
+          </ng-container>
+      
+      
+          <ng-container matColumnDef="category">
+              <mat-header-cell fxFlex="20%" *matHeaderCellDef> Familia </mat-header-cell>
+              <mat-cell fxFlex="20%" *matCellDef="let offer"> {{offer.category.name}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="date">
+              <mat-header-cell fxFlex="10%" *matHeaderCellDef> Fecha </mat-header-cell>
+              <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.date}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="province">
+              <mat-header-cell fxFlex="10%" *matHeaderCellDef> Provincia </mat-header-cell>
+              <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.province.name}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="municipe">
+              <mat-header-cell fxFlex="10%" *matHeaderCellDef> Municipio </mat-header-cell>
+              <mat-cell fxFlex="10%" *matCellDef="let offer"> {{offer.municipe.name}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="actions">
+              <mat-header-cell fxFlex *matHeaderCellDef></mat-header-cell>
+              <mat-cell fxFlex fxLayoutAlign="end" *matCellDef="let offer">
+                  <a [routerLink]="['/admin/offers/', offer.id]"><mat-icon>visibility</mat-icon></a>
+              </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedOffersColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedOffersColumns;"></mat-row>
+        </mat-table>
+
+
+
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!--<h3>Mis Ofertas</h3>
 
 <table class="table table-bordered table-striped">
   <thead class="thead-light">
@@ -28,3 +85,4 @@
     </tr>
   </tbody>
 </table>
+-->
