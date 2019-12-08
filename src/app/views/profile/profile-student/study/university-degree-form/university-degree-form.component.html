@@ -1,44 +1,47 @@
 <form [formGroup]="rForm" (submit)="submit()">
-  <div class="form-group">
-    <label for="institution">Centro educativo</label>
+  <mat-form-field>
     <input
-      type="text"
-      class="col-sm-10 form-control"
-      name="institution"
+      matInput
+      placeholder="Centro educativo *"
+      id="institution"
       formControlName="institution"
     />
-  </div>
+    <mat-error *ngIf="rForm.controls.institution.errors">
+      Corrige el error en Centro educativo
+    </mat-error>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="title">Título</label>
+  <mat-form-field>
     <input
-      type="text"
-      class="col-sm-10 form-control"
-      name="title"
+      matInput
+      placeholder="T&iacute;tulo *"
+      id="title"
       formControlName="title"
     />
-  </div>
+    <mat-error *ngIf="rForm.controls.title.errors">
+      Corrige el error en T&iacute;tulo
+    </mat-error>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="date">Fecha de obtención del título</label>
+  <mat-form-field>
     <input
-      type="text"
-      name="date"
-      class="col-sm-10 form-control"
+      matInput
+      placeholder="Fecha de obtención del t&iacute;tulo *"
+      id="date"
       formControlName="date"
     />
-  </div>
-  <div class="form-group">
-    <label for="bilingue">Bilingue</label>
-    <input
-      type="checkbox"
-      name="bilingue"
-      class="form-check-input"
-      formControlName="bilingue"
-    />
+    <mat-error *ngIf="rForm.controls.date.errors">
+      Corrige el error en Fecha de obtención del t&iacute;tulo
+    </mat-error>
+  </mat-form-field>
+
+  <mat-checkbox
+    formControlName="bilingue">Bilingüe
+  </mat-checkbox>
+  <div fxLayout="row wrap">
+    <div fxFlex fxLayoutAlign="center center">
+      <button type="submit" mat-raised-button color="primary" [disabled]="rForm.invalid"><mat-icon>save</mat-icon>Guardar</button>
+    </div>
   </div>
 
-  <button class="btn btn-primary" type="submit" [disabled]="rForm.invalid">
-    Guardar
-  </button>
 </form>

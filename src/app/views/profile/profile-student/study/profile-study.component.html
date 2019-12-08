@@ -1,27 +1,33 @@
-<form [formGroup]="rForm" (submit)="submit()">
-  <select
-    class="col-sm-10 form-control"
-    [compareWith]="compareOption"
-    formControlName="option"
-  >
-    <option selected>---</option>
+<div class="profile-wrapper" fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title fxFlex fxLayoutAlign="start center">Datos personales</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="rForm" (submit)="submit()">
+        <mat-form-field>
+          <mat-label>Opci&oacute;n</mat-label>
+          <mat-select [compareWith]="compareOption" formControlName="option">
+            <mat-option [value]="option" *ngFor="let option of options">
+              {{ option.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-    <option [ngValue]="option" *ngFor="let option of options">{{
-      option.name
-    }}</option>
-  </select>
+        <app-vocational-form
+          *ngIf="isSelectVocational()"
+          [study]="study"
+          (onSave)="saveOrUpdate($event)"
+          (onExit)="exit($event)"
+        ></app-vocational-form>
 
-  <app-vocational-form
-    *ngIf="isSelectVocational()"
-    [study]="study"
-    (onSave)="saveOrUpdate($event)"
-    (onExit)="exit($event)"
-  ></app-vocational-form>
-
-  <app-university-degree-form
-    *ngIf="isSelectUniversity()"
-    [study]="study"
-    (onSave)="saveOrUpdate($event)"
-    (onExit)="exit($event)"
-  ></app-university-degree-form>
-</form>
+        <app-university-degree-form
+          *ngIf="isSelectUniversity()"
+          [study]="study"
+          (onSave)="saveOrUpdate($event)"
+          (onExit)="exit($event)"
+        ></app-university-degree-form>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
