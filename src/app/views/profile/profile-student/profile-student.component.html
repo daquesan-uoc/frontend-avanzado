@@ -66,48 +66,48 @@
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
         <mat-table [dataSource]="user.studies" class="mat-elevation-z8">
           <ng-container matColumnDef="type">
-            <mat-header-cell fxFlex="20%" *matHeaderCellDef> Tipo </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.level.name}} </mat-cell>
+            <mat-header-cell fxFlex="15%"  *matHeaderCellDef> Tipo </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let study"> {{study.level.name}} </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="level">
-            <mat-header-cell *matHeaderCellDef> Nivel </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.grade?.name}} </mat-cell>
+            <mat-header-cell fxFlex="15%" *matHeaderCellDef> Nivel </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let study"> {{study.grade?.name}} </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="title">
-            <mat-header-cell *matHeaderCellDef> T&iacute;tulo </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.title.name || study.title}} </mat-cell>
+            <mat-header-cell fxFlex="24%" *matHeaderCellDef> T&iacute;tulo </mat-header-cell>
+            <mat-cell fxFlex="24%" *matCellDef="let study"> {{study.title.name || study.title}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="center">
-            <mat-header-cell *matHeaderCellDef> Centro </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.institution.name || study.institution}} </mat-cell>
+            <mat-header-cell fxFlex="15%" *matHeaderCellDef> Centro </mat-header-cell>
+            <mat-cell fxFlex="15%" *matCellDef="let study"> {{study.institution.name || study.institution}} </mat-cell>
           </ng-container>
         
           <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.date}} </mat-cell>
+            <mat-header-cell fxFlex="10%" fxLayoutAlign="center center" *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell fxFlex="10%" fxLayoutAlign="center center" *matCellDef="let study"> {{study.date}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="certificate">
-            <mat-header-cell *matHeaderCellDef> Certificado </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.certificate ? 'Sí' : 'No'}} </mat-cell>
+            <mat-header-cell fxFlex="6%" fxLayoutAlign="center center" *matHeaderCellDef> Certificado </mat-header-cell>
+            <mat-cell fxFlex="6%" fxLayoutAlign="center center" *matCellDef="let study"> {{study.certificate ? 'Sí' : 'No'}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="bilingual">
-            <mat-header-cell *matHeaderCellDef> Bilingüe </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.bilingue ? 'Sí' : 'No'}} </mat-cell>
+            <mat-header-cell fxFlex="5%" fxLayoutAlign="center center" *matHeaderCellDef> Bilingüe </mat-header-cell>
+            <mat-cell fxFlex="5%" fxLayoutAlign="center center" *matCellDef="let study"> {{study.bilingue ? 'Sí' : 'No'}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="dual">
-            <mat-header-cell *matHeaderCellDef> Dual </mat-header-cell>
-            <mat-cell *matCellDef="let study"> {{study.dual ? 'Sí' : 'No'}} </mat-cell>
+            <mat-header-cell fxFlex="3%" fxLayoutAlign="center center" *matHeaderCellDef> Dual </mat-header-cell>
+            <mat-cell fxFlex="3%" fxLayoutAlign="center center" *matCellDef="let study"> {{study.dual ? 'Sí' : 'No'}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell fxLayoutAlign="end center" *matCellDef="let study">
+            <mat-header-cell fxFlex="7%" *matHeaderCellDef></mat-header-cell>
+            <mat-cell fxFlex="7%" fxLayoutAlign="end center" *matCellDef="let study">
               <a [routerLink]="['/admin/profile/profile-student/study', study.uid]">
                 <mat-icon>edit</mat-icon>
               </a>
@@ -134,23 +134,23 @@
       <div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
         <mat-table [dataSource]="user.languages" class="mat-elevation-z8">
           <ng-container matColumnDef="level">
-            <mat-header-cell fxFlex="20%" fxLayoutAlign="start center" *matHeaderCellDef> Nivel </mat-header-cell>
-            <mat-cell fxFlex="20%" *matCellDef="let language"> {{language.level.name}} </mat-cell>
+            <mat-header-cell fxFlex="6%" fxLayoutAlign="center center" *matHeaderCellDef> Nivel </mat-header-cell>
+            <mat-cell fxFlex="6%" fxLayoutAlign="center center" *matCellDef="let language"> {{language.level.name}} </mat-cell>
           </ng-container>
     
           <ng-container matColumnDef="language">
-            <mat-header-cell fxFlex="40%" *matHeaderCellDef> Idioma </mat-header-cell>
-            <mat-cell fxFlex="40%" *matCellDef="let language"> {{language.name.name}} </mat-cell>
+            <mat-header-cell fxFlex="77%" *matHeaderCellDef> Idioma </mat-header-cell>
+            <mat-cell fxFlex="77%" *matCellDef="let language"> {{language.name.name}} </mat-cell>
           </ng-container>
     
           <ng-container matColumnDef="date">
-            <mat-header-cell fxFlex *matHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell fxFlex *matCellDef="let language"> {{language.date}} </mat-cell>
+            <mat-header-cell fxFlex="10%" fxLayoutAlign="center center" *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell fxFlex="10%" fxLayoutAlign="center center" *matCellDef="let language"> {{language.date}} </mat-cell>
           </ng-container>
     
           <ng-container matColumnDef="actions">
-            <mat-header-cell fxFlex="70px" *matHeaderCellDef></mat-header-cell>
-            <mat-cell fxFlex="70px" fxLayoutAlign="end center" *matCellDef="let language">
+            <mat-header-cell fxFlex="7%" *matHeaderCellDef></mat-header-cell>
+            <mat-cell fxFlex="7%" fxLayoutAlign="end center" *matCellDef="let language">
               <a [routerLink]="['/admin/profile/profile-student/language',language.uid]">
                 <mat-icon>edit</mat-icon>
               </a>
