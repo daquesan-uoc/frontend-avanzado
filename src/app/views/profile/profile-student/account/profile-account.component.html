@@ -21,19 +21,7 @@
               </div>
             </div>
             <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
-              <!--<mat-form-field>
-                <input
-                  matInput
-                  placeholder="Nombre *"
-                  id="name"
-                  formControlName="name"
-                  [ngClass]="{ 'is-invalid': && rForm.controls.name.errors }"
-                />
-                <mat-error *ngIf="rForm.controls.name.errors">
-                  Corrige el error en Nombre
-                </mat-error>
-              </mat-form-field>-->
-              <mat-form-field>
+               <mat-form-field>
                 <input
                   matInput
                   placeholder="Nombre *"
@@ -114,27 +102,54 @@
                   id="license"
                   formControlName="license"
                 />
-                <mat-error *ngIf="rForm.controls.license.errors">
-                  Corrige el error en Permisos de conducir
-                </mat-error>
               </mat-form-field>              
             </div>
             <div fxFlex fxLayout="column" fxFlex="35%" fxLayoutAlign="center start">
               <mat-form-field>
-                <input matInput placeholder="Direcci&oacute;n" value="{{ user.address.street }}">
+                <input
+                  matInput
+                  placeholder="Calle *"
+                  id="street"
+                  formControlName="street"
+                />
+                <mat-error *ngIf="rForm.controls.street.errors">
+                  Corrige el error en Calle
+                </mat-error>
+              </mat-form-field>              
+              <mat-form-field>
+                <mat-label>Provincia</mat-label>
+                <mat-select [compareWith]="compareByUID" formControlName="province">
+                  <mat-option [value]="province" *ngFor="let province of provinces">
+                    {{ province.name }}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Municipio" value="{{ user.address.municipe.name }}">
+                <mat-label>Municipio</mat-label>
+                <mat-select [compareWith]="compareByUID" formControlName="municipe">
+                  <mat-option [value]="municipe" *ngFor="let municipe of municipes">
+                    {{ municipe.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>                 
+              <mat-form-field>
+                <textarea
+                  matInput
+                  placeholder="Acerca de mi..."
+                  id="aboutMe"
+                  formControlName="aboutMe"
+                  >
+                </textarea>
               </mat-form-field>
               <mat-form-field>
-                <input matInput placeholder="Provincia" value="{{ user.address.province.name }}">
-              </mat-form-field>
-              <mat-form-field>
-                <textarea matInput placeholder="Acerca de mi...">{{ user.aboutMe }}</textarea>
-              </mat-form-field>
-              <mat-form-field>
-                <textarea matInput placeholder="Otras competencias">{{ user.otherCompetences }}</textarea>
-              </mat-form-field>    
+                <textarea
+                  matInput
+                  placeholder="Otras competencias"
+                  id="otherCompetences"
+                  formControlName="otherCompetences"
+                  >
+                </textarea>
+              </mat-form-field>              
             </div>
           </div>
           <div fxLayout="row">
@@ -147,71 +162,3 @@
     </mat-card-content>
   </mat-card>
 </div>
-
-
-<!--<form [formGroup]="rForm" (submit)="save()">
-  <div class="form-group">
-    <label for="street">Calle</label>
-    <input
-      type="text"
-      name="street"
-      class="col-sm-10 form-control"
-      formControlName="street"
-    />
-  </div>
-  <div class="form-group">
-    <label for="level">Provincia</label>
-    <select
-      [compareWith]="compareByUID"
-      class="col-sm-10 form-control"
-      name="province"
-      formControlName="province"
-    >
-      <option [ngValue]="province" *ngFor="let province of provinces">
-        {{ province.name }}</option
-      >
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="level">Municipio</label>
-    <select
-      [compareWith]="compareByUID"
-      class="col-sm-10 form-control"
-      name="municipe"
-      formControlName="municipe"
-    >
-      <option [ngValue]="municipe" *ngFor="let municipe of municipes">
-        {{ municipe.name }}</option
-      >
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="aboutMe">Acerca de mi</label>
-    <textarea
-      name="aboutMe"
-      class="col-sm-10 form-control"
-      formControlName="aboutMe"
-    ></textarea>
-  </div>
-  <div class="form-group">
-    <label for="otherCompetences">Otras competencias</label>
-    <textarea
-      name="otherCompetences"
-      class="col-sm-10 form-control"
-      formControlName="otherCompetences"
-    ></textarea>
-  </div>
-  <div class="form-group">
-    <label for="license">Licencias</label>
-    <textarea
-      name="license"
-      class="col-sm-10 form-control"
-      formControlName="license"
-    ></textarea>
-  </div>
-  <button class="btn btn-primary" type="submit" [disabled]="rForm.invalid">
-    Guardar
-  </button>
-</form>
--->
