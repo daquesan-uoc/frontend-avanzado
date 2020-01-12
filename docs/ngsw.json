@@ -1,0 +1,120 @@
+{
+  "configVersion": 1,
+  "timestamp": 1578831042466,
+  "index": "/UOCJob/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/UOCJob/1-es2015.2b359f441a26c16c6bd6.js",
+        "/UOCJob/1-es5.2b359f441a26c16c6bd6.js",
+        "/UOCJob/10-es2015.ca58c261d837fea3bef8.js",
+        "/UOCJob/10-es5.ca58c261d837fea3bef8.js",
+        "/UOCJob/11-es2015.d523823e773ec210f835.js",
+        "/UOCJob/11-es5.d523823e773ec210f835.js",
+        "/UOCJob/12-es2015.c86b8352fdb703716e0d.js",
+        "/UOCJob/12-es5.c86b8352fdb703716e0d.js",
+        "/UOCJob/13-es2015.38a15f8f838825d3392a.js",
+        "/UOCJob/13-es5.38a15f8f838825d3392a.js",
+        "/UOCJob/7-es2015.f0dbe5a3fa00dbf3f39b.js",
+        "/UOCJob/7-es5.f0dbe5a3fa00dbf3f39b.js",
+        "/UOCJob/8-es2015.9b876d7700528f37e561.js",
+        "/UOCJob/8-es5.9b876d7700528f37e561.js",
+        "/UOCJob/9-es2015.1dfa899415c740da779b.js",
+        "/UOCJob/9-es5.1dfa899415c740da779b.js",
+        "/UOCJob/common-es2015.2b8378c8b93c0788d06d.js",
+        "/UOCJob/common-es5.2b8378c8b93c0788d06d.js",
+        "/UOCJob/favicon.ico",
+        "/UOCJob/index.html",
+        "/UOCJob/main-es2015.f9bf87b160c197c109cd.js",
+        "/UOCJob/main-es5.f9bf87b160c197c109cd.js",
+        "/UOCJob/manifest.webmanifest",
+        "/UOCJob/polyfills-es2015.b00a8ee45d22faafa706.js",
+        "/UOCJob/polyfills-es5.8de5fca6e8c20518eff8.js",
+        "/UOCJob/runtime-es2015.b84f906c480a5a9c985b.js",
+        "/UOCJob/runtime-es5.b84f906c480a5a9c985b.js",
+        "/UOCJob/styles.2d746dc267caa3f49f93.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/UOCJob/assets/icons/icon-128x128.png",
+        "/UOCJob/assets/icons/icon-144x144.png",
+        "/UOCJob/assets/icons/icon-152x152.png",
+        "/UOCJob/assets/icons/icon-192x192.png",
+        "/UOCJob/assets/icons/icon-384x384.png",
+        "/UOCJob/assets/icons/icon-512x512.png",
+        "/UOCJob/assets/icons/icon-72x72.png",
+        "/UOCJob/assets/icons/icon-96x96.png",
+        "/UOCJob/assets/img/perfil.png",
+        "/UOCJob/assets/img/uoc_logo.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/UOCJob/1-es2015.2b359f441a26c16c6bd6.js": "bfb2aa1b3eace78fa3a62b59270d6d55aa2aa9e7",
+    "/UOCJob/1-es5.2b359f441a26c16c6bd6.js": "bfb2aa1b3eace78fa3a62b59270d6d55aa2aa9e7",
+    "/UOCJob/10-es2015.ca58c261d837fea3bef8.js": "3d329500b542d2a08fa3b1ee8ed5d29ba2d864b9",
+    "/UOCJob/10-es5.ca58c261d837fea3bef8.js": "4b6dcc801b5e665a272ca9acfc2fee6876009748",
+    "/UOCJob/11-es2015.d523823e773ec210f835.js": "b736f917f50cc76b0abb12d4b8475fe903c4071d",
+    "/UOCJob/11-es5.d523823e773ec210f835.js": "e4cc14eb7efc0bb370663e0ea9578776daee24a1",
+    "/UOCJob/12-es2015.c86b8352fdb703716e0d.js": "8b4cea7927ec4ff94a4e147057521af10b7f84d2",
+    "/UOCJob/12-es5.c86b8352fdb703716e0d.js": "c0202e50a534f3ccdbed0a25283ec3ad79fcab9a",
+    "/UOCJob/13-es2015.38a15f8f838825d3392a.js": "9fa8bb91f83e37909dcfdb4833beea8f4332da74",
+    "/UOCJob/13-es5.38a15f8f838825d3392a.js": "5c07fb76f103feba9369fa29f26b082d5fb1980f",
+    "/UOCJob/7-es2015.f0dbe5a3fa00dbf3f39b.js": "7661f29eedc9b6afb579733fb46046fd81d300cf",
+    "/UOCJob/7-es5.f0dbe5a3fa00dbf3f39b.js": "edff02f4258b7975c140a75d5779a468c3039532",
+    "/UOCJob/8-es2015.9b876d7700528f37e561.js": "8b00029f2d909f3758aeea537574e9a088712239",
+    "/UOCJob/8-es5.9b876d7700528f37e561.js": "0c275cf3ef82186c158bc84a37b8be64f3be58da",
+    "/UOCJob/9-es2015.1dfa899415c740da779b.js": "66246df287c0ae17cb988d76e1a4f530bcbaa716",
+    "/UOCJob/9-es5.1dfa899415c740da779b.js": "9aa2433b8d40c17140b4c4fa32da3c55cf44b752",
+    "/UOCJob/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/UOCJob/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/UOCJob/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/UOCJob/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/UOCJob/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/UOCJob/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/UOCJob/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/UOCJob/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/UOCJob/assets/img/perfil.png": "c34d68aa614df190342bf4ccfb05fabce3561034",
+    "/UOCJob/assets/img/uoc_logo.png": "a8268228316a687fc11a0ecbedb2507aedcccf39",
+    "/UOCJob/common-es2015.2b8378c8b93c0788d06d.js": "a10dbda116d439b655239e8bfd1aae32f5be833c",
+    "/UOCJob/common-es5.2b8378c8b93c0788d06d.js": "5b91c7fbd7c08b93a6534bd181aca8a3e0888851",
+    "/UOCJob/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/UOCJob/index.html": "3540a264b0d1fc93476ab499c0c81f6521aae5f7",
+    "/UOCJob/main-es2015.f9bf87b160c197c109cd.js": "1b824bf2039a85ef9d99ccd2a6287fde32f87a38",
+    "/UOCJob/main-es5.f9bf87b160c197c109cd.js": "e697632fcba46a4f860b64f0e825b1de29679f35",
+    "/UOCJob/manifest.webmanifest": "cb1510963c4dc2e2c0c12ada9a3bf935928c679b",
+    "/UOCJob/polyfills-es2015.b00a8ee45d22faafa706.js": "c37a8026023b3688ee0707b4afee9adfc3d4c95e",
+    "/UOCJob/polyfills-es5.8de5fca6e8c20518eff8.js": "150715c33b16144692d809e7843206541c89683d",
+    "/UOCJob/runtime-es2015.b84f906c480a5a9c985b.js": "37e28667a368353a56018ee861c37d2ce77401e4",
+    "/UOCJob/runtime-es5.b84f906c480a5a9c985b.js": "3531932aa01ab01773c90545b56a4a9a8c4389fe",
+    "/UOCJob/styles.2d746dc267caa3f49f93.css": "19c799b2c783dde13de271e3c25b52665486dff3"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
