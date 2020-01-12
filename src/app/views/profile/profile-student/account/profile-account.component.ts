@@ -41,6 +41,9 @@ export class ProfileAccountComponent implements OnInit, OnChanges {
 
   constructor() {}
   ngOnInit() {
+    console.log('entra por aquí');
+    console.log('el valor de user es');
+    console.log(this.user);
     this.loadSelectProperties();
     this.loadFormInstance();
   }
@@ -54,6 +57,7 @@ export class ProfileAccountComponent implements OnInit, OnChanges {
   }
 
   public loadFormInstance(): void {
+    console.log(this.user);
     this.rForm = new FormGroup(
       {
         name: new FormControl(this.user.name, [

@@ -25,6 +25,7 @@ export class ProfileStudyComponent implements OnChanges {
   @Input() user: User;
   @Output() save: EventEmitter<User> = new EventEmitter();
   @Output() update: EventEmitter<User> = new EventEmitter();
+
   rForm: FormGroup;
   options = MockData.TYPE_STUDIES;
 
@@ -88,4 +89,10 @@ export class ProfileStudyComponent implements OnChanges {
     const value = this.rForm.get('option').value;
     return value && value.uid === MockData.TYPE_STUDIES[1].uid;
   }
+
+  submit () {
+    this.saveOrUpdate(this.study);
+  }
+
+  exit(_event){}
 }

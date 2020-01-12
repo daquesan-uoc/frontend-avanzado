@@ -1,4 +1,4 @@
-/* import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'; */
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Component, Inject } from '@angular/core';
 
 @Component({
@@ -29,7 +29,8 @@ import { Component, Inject } from '@angular/core';
   `
 })
 export class AppComfirmComponent {
-  constructor() /*  public dialogRef: MatDialogRef<AppComfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any */
-  {}
+  constructor(
+    public dialogRef: MatDialogRef<AppComfirmComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 }
